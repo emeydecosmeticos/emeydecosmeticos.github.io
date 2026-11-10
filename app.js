@@ -92,20 +92,13 @@
 
   // ---------- categorías ----------
   function renderChips() {
-    const row = $('chips');
-    const all = [{ id: 'todo', nombre: 'Todo' }, ...categories];
-    row.replaceChildren(...all.map((c) => {
-      const b = el('button', 'chip', c.nombre);
-      b.type = 'button';
-      b.setAttribute('aria-pressed', String(filter.cat === c.id));
-      b.addEventListener('click', () => {
-        filter.cat = c.id;
-        writeUrl(); renderChips(); renderGrid(); scrollToGrid();
-      });
-      return b;
+    const sel = $('cat');
+    sel.replaceChildren(...[{ id: 'todo', nombre: 'Todo' }, ...categories].map((c) => {
+      const o = el('option', null, c.nombre);
+      o.value = c.id;
+      return o;
     }));
-    const active = row.querySelector('[aria-pressed="true"]');
-    if (active) row.scrollTo({ left: active.offsetLeft - row.clientWidth / 2 + active.offsetWidth / 2 });
+    sel.value = filter.cat;
   }
 
   // al cambiar de categoría, la lista vuelve arriba (sin animación: es una acción frecuente)
@@ -355,6 +348,11 @@
   }
 
   // ---------- eventos ----------
+  $('cat').addEventListener('change', (e) => {
+    filter.cat = e.target.value;
+    writeUrl(); renderGrid(); scrollToGrid();
+  });
+
   let searchTimer;
   $('search').addEventListener('input', (e) => {
     clearTimeout(searchTimer);

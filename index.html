@@ -29,16 +29,18 @@
   </header>
 
   <div class="tools">
-    <div class="wrap">
+    <div class="wrap tools__row">
       <label class="search">
         <span class="visually-hidden">Buscar producto</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
-        <input id="search" type="search" placeholder="Buscar protector, suero, rímel" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="search">
+        <input id="search" type="search" placeholder="Buscar" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="search">
+      </label>
+      <label class="picker">
+        <span class="visually-hidden">Categoría</span>
+        <select id="cat"><option value="todo">Todo</option></select>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
       </label>
     </div>
-    <nav class="chips" aria-label="Categorías">
-      <div class="wrap chips__row" id="chips"></div>
-    </nav>
   </div>
 
   <main class="wrap">

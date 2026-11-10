@@ -1,5 +1,5 @@
 /* Hallmark · shape: app screen · genre: modern-minimal · theme: Coral (deal 3/3, seed mobile-makeup-catalog-small-d989·6bb55c46·2026-11-10·r0) · redesign: full
- * nav: wordmark bar, then a sticky search and category row · signature: the shade chip card, each product shown as a paint chip of its real tone · states: loading, empty, error, full
+ * nav: wordmark bar, then a sticky search and category picker · signature: the shade chip card, each product shown as a paint chip of its real tone · states: loading, empty, error, full
  * axes: light/grotesk-sans/warm · posture: restrained · contrast: pass · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V3 · weakest: V, no product photographs yet so the tone chips carry the grid until real photos fill the slots */
 /* waive: photo treatment · makeup shades must show in true colour, so slot photographs are not muted */
@@ -62,14 +62,11 @@ button, a, label, input, textarea { touch-action: manipulation; }
 .search input { flex: 1; min-width: 0; height: 100%; border: 0; background: transparent; color: var(--color-ink); outline: none; font-size: var(--text-md); }
 .search input::placeholder { color: var(--color-muted); }
 
-.chips { position: relative; }
-.chips__row { display: flex; gap: var(--space-xs); overflow-x: auto; padding-block: var(--space-xs); scrollbar-width: none; scroll-snap-type: x proximity; scroll-padding-inline: var(--gutter); overscroll-behavior-x: contain; }
-.chips__row::-webkit-scrollbar { display: none; }
-.chips::after { content: ""; position: absolute; inset: 0 0 0 auto; width: var(--space-xl); background: linear-gradient(to left, var(--color-paper), transparent); pointer-events: none; }
-.chip { flex: none; scroll-snap-align: start; min-height: 44px; padding-inline: var(--space-md); border: 0; border-radius: var(--radius-stock); background-color: var(--color-cotton); background-image: var(--tex-cotton); color: var(--color-print); font-size: var(--text-sm); font-weight: 500; box-shadow: var(--edge-stock); cursor: pointer; transition: transform var(--dur-micro) var(--ease-out); }
-.chip:last-child { margin-right: var(--space-lg); }
-.chip:active { transform: scale(0.96); }
-.chip[aria-pressed="true"] { background: var(--color-board); color: var(--color-board-type); box-shadow: none; }
+.tools__row { display: flex; gap: var(--space-xs); padding-bottom: var(--space-xs); }
+.search { flex: 1; min-width: 0; }
+.picker { position: relative; flex: none; max-width: 55%; display: flex; align-items: center; color: var(--color-print); }
+.picker select { appearance: none; -webkit-appearance: none; width: 100%; height: 44px; padding: 0 var(--space-xl) 0 var(--space-sm); border: 0; border-radius: var(--radius-stock); background-color: var(--color-cotton); background-image: var(--tex-cotton); color: inherit; font-size: var(--text-md); font-weight: 500; box-shadow: var(--edge-stock); text-overflow: ellipsis; cursor: pointer; }
+.picker svg { position: absolute; right: var(--space-sm); pointer-events: none; }
 
 /* grid */
 main { padding-block: var(--space-md) var(--space-3xl); min-height: 70vh; }
@@ -120,7 +117,7 @@ main { padding-block: var(--space-md) var(--space-3xl); min-height: 70vh; }
 
 @media (hover: hover) {
   .top__link:hover, .textbtn:hover, .asklink:hover { color: var(--color-ink); }
-  .iconbtn:hover, .chip:hover, .btn:hover:not([disabled]), .tone:hover { transform: translateY(-1px); }
+  .iconbtn:hover, .btn:hover:not([disabled]), .tone:hover { transform: translateY(-1px); }
   .card:hover .card__media { transform: translateY(-2px); }
   .stepper button:hover { background: var(--color-paper-2); }
 }
