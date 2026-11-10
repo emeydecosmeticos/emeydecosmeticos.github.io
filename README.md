@@ -1,43 +1,24 @@
----
-layout: default
-title: Bella Cosmetics Catalog
-description: Premium beauty products delivered to your door
----
+# Catálogo eme y de
 
-# Bella Cosmetics Catalog
+Sitio: https://emeydecosmeticos.github.io/
 
-![Brand Logo](images/logo.png){: style="height:100px"}
+Página estática, sin compilación. GitHub Pages publica la rama `main` tal cual.
 
-## Skincare
+## Cambiar productos
 
-### [Hydrating Facial Serum](/products/serum)
-![Serum](images/serum.jpg){: style="height:200px"}
-- Deep hydration for 24 hours
-- Vitamin E & Hyaluronic Acid
-- **Price:** $45.00
-- [Learn More](#)
+Todo está en `products.json`:
 
-### [Revitalizing Eye Cream](/products/eye-cream)
-![Eye Cream](images/eye-cream.jpg){: style="height:200px"}
-- Reduces puffiness and dark circles
-- Caffeine-infused formula
-- **Price:** $38.00
-- [Learn More](#)
+- `tienda.whatsapp`: número con código de país, solo dígitos (ej. `5215512345678`). Vacío = WhatsApp pide elegir contacto.
+- `tienda.ejemplo`: ponlo en `false` para quitar el aviso de "productos de ejemplo".
+- `categorias`: las pestañas de arriba.
+- `productos`: cada uno con `id`, `nombre`, `categoria`, `precio`, `descripcion`, y opcionalmente `tonos`, `imagen` y `"agotado": true`.
 
-## Makeup
+## Fotos
 
-### [Matte Liquid Lipstick](/products/lipstick)
-![Lipstick](images/lipstick.jpg){: style="height:200px"}
-- 12-hour wear
-- 8 vibrant shades
-- **Price:** $22.00
-- [Learn More](#)
+Guárdalas en `images/` (800x1000 px, menos de 150 KB) y escribe la ruta en `"imagen"`, por ejemplo `"images/labial-mate.jpg"`. Un tono también puede llevar su propia `"imagen"`.
 
-## Special Offers
+## Probar en tu computadora
 
-| Product                | Original Price | Sale Price |
-|------------------------|---------------|------------|
-| Complete Skincare Set  | $120          | $99        |
-| Makeup Starter Kit     | $85           | $65        |
+    python3 -m http.server 4173
 
-[Contact Us](mailto:hello@bella.mx){: .button}
+y abre http://localhost:4173

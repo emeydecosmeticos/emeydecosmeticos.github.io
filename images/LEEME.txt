@@ -1,0 +1,2 @@
+Fotos de producto. Recomendado: 800x1000 px (4:5), JPG o WebP, menos de 150 KB.
+En products.json: "imagen": "images/labial-mate.jpg"

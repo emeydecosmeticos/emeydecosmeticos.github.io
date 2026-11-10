@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>eme y de | Catálogo</title>
+  <meta name="description" content="Catálogo de maquillaje de eme y de. Elige tus productos y manda tu pedido por WhatsApp.">
+  <meta name="theme-color" content="#f6f3f0">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top__row">
+      <h1 class="brand">eme y de</h1>
+      <a class="top__link" id="ig-link" href="https://www.instagram.com/eme_y_de/" rel="noopener">Instagram</a>
+      <button class="iconbtn" id="open-cart" type="button" aria-label="Ver mi pedido">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+        <span class="iconbtn__count" id="cart-count" hidden>0</span>
+      </button>
+    </div>
+    <div class="wrap">
+      <label class="search">
+        <span class="visually-hidden">Buscar producto</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+        <input id="search" type="search" placeholder="Buscar labial, base, brochas" autocomplete="off" enterkeyhint="search">
+      </label>
+    </div>
+  </header>
+
+  <nav class="chips" aria-label="Categorías">
+    <div class="wrap chips__row" id="chips"></div>
+  </nav>
+
+  <main class="wrap">
+    <p class="notice" id="notice" hidden>Productos y precios de ejemplo. Se cambian en products.json.</p>
+    <p class="count" id="result-count" aria-live="polite"></p>
+    <div class="grid" id="grid" aria-busy="true">
+      <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+    </div>
+    <noscript>
+      <p class="state">Este catálogo necesita JavaScript. Mientras tanto puedes ver los productos en <a href="https://www.instagram.com/eme_y_de/">Instagram</a>.</p>
+    </noscript>
+  </main>
+
+  <footer class="foot wrap">
+    <p>Los pedidos se confirman por WhatsApp. Esta página no cobra ni guarda tus datos.</p>
+  </footer>
+
+  <div class="cartbar" id="cartbar" hidden>
+    <button class="btn btn--ink cartbar__btn" id="cartbar-btn" type="button">
+      <span id="cartbar-label">Ver pedido</span>
+      <span class="fig" id="cartbar-total"></span>
+    </button>
+  </div>
+
+  <dialog class="sheet" id="product-sheet" aria-labelledby="ps-name">
+    <div class="sheet__body">
+      <button class="iconbtn sheet__close" type="button" data-close aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <div class="sheet__media" id="ps-media"></div>
+      <div class="sheet__text">
+        <h2 id="ps-name"></h2>
+        <p class="price" id="ps-price"></p>
+        <p class="desc" id="ps-desc"></p>
+      </div>
+      <fieldset class="tones" id="ps-tones-wrap" hidden>
+        <legend>Tono: <span id="ps-tone-name"></span></legend>
+        <div class="tones__row" id="ps-tones"></div>
+      </fieldset>
+      <div class="sheet__actions">
+        <div class="stepper" id="ps-stepper">
+          <button type="button" data-step="-1" aria-label="Quitar uno">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>
+          </button>
+          <output class="fig" id="ps-qty" aria-live="polite">1</output>
+          <button type="button" data-step="1" aria-label="Agregar uno">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12M12 6v12"/></svg>
+          </button>
+        </div>
+        <button class="btn btn--ink" id="ps-add" type="button">Agregar al pedido</button>
+      </div>
+      <a class="asklink" id="ps-ask" href="#" target="_blank" rel="noopener">Preguntar por este producto en WhatsApp</a>
+    </div>
+  </dialog>
+
+  <dialog class="sheet" id="cart-sheet" aria-labelledby="cs-title">
+    <div class="sheet__body">
+      <button class="iconbtn sheet__close" type="button" data-close aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <h2 id="cs-title">Mi pedido</h2>
+      <p class="state" id="cs-empty" hidden>Todavía no agregas nada. Toca un producto para elegir tono y cantidad.</p>
+      <ul class="lines" id="cs-lines"></ul>
+      <div id="cs-foot" hidden>
+        <label class="note">
+          <span>Nota para el pedido (opcional)</span>
+          <textarea id="cs-note" rows="2" placeholder="Entrega, dudas de tono, regalo"></textarea>
+        </label>
+        <p class="total"><span>Total</span><span class="fig" id="cs-total"></span></p>
+        <a class="btn btn--ink btn--wide" id="cs-send" href="#" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
+        <p class="fine">Se abre WhatsApp con tu lista escrita. Tú decides si la envías.</p>
+        <button class="textbtn" id="cs-clear" type="button">Vaciar pedido</button>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+{
+  "tienda": {
+    "nombre": "eme y de",
+    "instagram": "https://www.instagram.com/eme_y_de/",
+    "whatsapp": "",
+    "moneda": "MXN",
+    "locale": "es-MX",
+    "ejemplo": true
+  },
+  "categorias": [
+    { "id": "labios", "nombre": "Labios" },
+    { "id": "ojos", "nombre": "Ojos" },
+    { "id": "rostro", "nombre": "Rostro" },
+    { "id": "cuidado", "nombre": "Cuidado de la piel" },
+    { "id": "accesorios", "nombre": "Accesorios" }
+  ],
+  "productos": [
+    {
+      "id": "labial-mate",
+      "nombre": "Labial mate de larga duración",
+      "categoria": "labios",
+      "precio": 120,
+      "descripcion": "Acabado mate que no reseca. Dura toda la tarde sin retoques.",
+      "imagen": "",
+      "tonos": [
+        { "nombre": "Rosa palo", "color": "#c98a8f" },
+        { "nombre": "Terracota", "color": "#b5593f" },
+        { "nombre": "Rojo clásico", "color": "#b01f2e" },
+        { "nombre": "Vino", "color": "#6e1f33" },
+        { "nombre": "Nude canela", "color": "#b98268" }
+      ]
+    },
+    {
+      "id": "gloss-brillo",
+      "nombre": "Gloss con brillo espejo",
+      "categoria": "labios",
+      "precio": 95,
+      "descripcion": "Brillo sin sensación pegajosa, con un toque de color.",
+      "imagen": "",
+      "tonos": [
+        { "nombre": "Transparente", "color": "#f1d9d2" },
+        { "nombre": "Durazno", "color": "#f0a98a" },
+        { "nombre": "Frambuesa", "color": "#c9456b" }
+      ]
+    },
+    {
+      "id": "delineador-labios",
+      "nombre": "Delineador de labios cremoso",
+      "categoria": "labios",
+      "precio": 60,
+      "descripcion": "Punta suave que define sin jalar. Combina con el labial mate.",
+      "imagen": "",
+      "tonos": [
+        { "nombre": "Nude", "color": "#b07b66" },
+        { "nombre": "Café", "color": "#7a4a3a" },
+        { "nombre": "Rojo", "color": "#a3202c" }
+      ]
+    },
+    {
+      "id": "paleta-sombras",
+      "nombre": "Paleta de sombras, 12 tonos",
+      "categoria": "ojos",
+      "precio": 280,
+      "descripcion": "Mates y satinados que se difuminan fácil. Incluye espejo.",
+      "imagen": "",
+      "tonos": [
+        { "nombre": "Tonos tierra", "color": "#9a6a4c" },
+        { "nombre": "Tonos rosas", "color": "#c98b9b" }
+      ]
+    },
+    {
+      "id": "mascara-volumen",
+      "nombre": "Máscara de pestañas volumen",
+      "categoria": "ojos",
+      "precio": 110,
+      "descripcion": "Da volumen sin grumos. Se retira con agua tibia.",
+      "imagen": "",
+      "tonos": [
+        { "nombre": "Negro", "color": "#1d1a1a" },
+        { "nombre": "Café", "color": "#4a3128" }
+      ]
+    },
+    {
+      "id": "delineador-liquido",
+      "nombre": "Delineador líquido punta fina",
+      "categoria": "ojos",
+      "precio": 85,
+      "descripcion": "Trazo preciso a prueba de agua.",
+      "imagen": "",
+      "agotado": true,
+      "tonos": [
+        { "nombre": "Negro", "color": "#151314" }
+      ]
+    },
+    {
+      "id": "base-ligera",
+      "nombre": "Base ligera acabado natural",
+      "categoria": "rostro",
+      "precio": 220,
+      "descripcion": "Cobertura media que deja ver la piel. Pregunta por tu tono si tienes duda.",
+      "imagen": "",
+      "tonos": [
+        { "nombre": "Claro", "color": "#ecc9ab" },
+        { "nombre": "Medio claro", "color": "#dcae89" },
+        { "nombre": "Medio", "color": "#c7926b" },
+        { "nombre": "Canela", "color": "#a8724d" },
+        { "nombre": "Moreno", "color": "#7f5237" }
+      ]
+    },
+    {
+      "id": "rubor-crema",
+      "nombre": "Rubor en crema",
+      "categoria": "rostro",
+      "precio": 130,
+      "descripcion": "Se aplica con los dedos y se funde con la piel.",
+      "imagen": "",
+      "tonos": [
+        { "nombre": "Rosa", "color": "#e08f9c" },
+        { "nombre": "Durazno", "color": "#eb9a78" },
+        { "nombre": "Malva", "color": "#b56b80" }
+      ]
+    },
+    {
+      "id": "iluminador",
+      "nombre": "Iluminador en polvo",
+      "categoria": "rostro",
+      "precio": 140,
+      "descripcion": "Brillo fino para pómulos y lagrimal.",
+      "imagen": "",
+      "tonos": [
+        { "nombre": "Champaña", "color": "#ecd3b0" },
+        { "nombre": "Dorado", "color": "#d9ae6c" }
+      ]
+    },
+    {
+      "id": "agua-micelar",
+      "nombre": "Agua micelar desmaquillante",
+      "categoria": "cuidado",
+      "precio": 150,
+      "descripcion": "Retira el maquillaje sin tallar. Botella de 200 ml.",
+      "imagen": "",
+      "color": "#bcd4d6"
+    },
+    {
+      "id": "serum-hidratante",
+      "nombre": "Sérum hidratante",
+      "categoria": "cuidado",
+      "precio": 190,
+      "descripcion": "Textura ligera para usar antes del maquillaje.",
+      "imagen": "",
+      "color": "#e6cf9a"
+    },
+    {
+      "id": "set-brochas",
+      "nombre": "Set de 8 brochas",
+      "categoria": "accesorios",
+      "precio": 250,
+      "descripcion": "Para rostro y ojos, con estuche.",
+      "imagen": "",
+      "color": "#c9a79b"
+    },
+    {
+      "id": "esponja",
+      "nombre": "Esponja para difuminar",
+      "categoria": "accesorios",
+      "precio": 45,
+      "descripcion": "Úsala húmeda para un acabado parejo.",
+      "imagen": "",
+      "color": "#e7a3a8"
+    }
+  ]
+}
