@@ -1,6 +1,6 @@
 {
   "tienda": {
-    "nombre": "eme y de",
+    "nombre": "Eme y De",
     "instagram": "https://www.instagram.com/eme_y_de/",
     "whatsapp": "",
     "moneda": "MXN",
@@ -8,165 +8,356 @@
     "ejemplo": true
   },
   "categorias": [
-    { "id": "labios", "nombre": "Labios" },
-    { "id": "ojos", "nombre": "Ojos" },
-    { "id": "rostro", "nombre": "Rostro" },
-    { "id": "cuidado", "nombre": "Cuidado de la piel" },
-    { "id": "accesorios", "nombre": "Accesorios" }
+    {
+      "id": "solares",
+      "nombre": "Protectores solares"
+    },
+    {
+      "id": "sueros",
+      "nombre": "Sueros"
+    },
+    {
+      "id": "cremas",
+      "nombre": "Cremas y rostro"
+    },
+    {
+      "id": "cuerpo",
+      "nombre": "Cuerpo"
+    },
+    {
+      "id": "cabello",
+      "nombre": "Cabello"
+    },
+    {
+      "id": "maquillaje",
+      "nombre": "Maquillaje"
+    }
   ],
   "productos": [
     {
-      "id": "labial-mate",
-      "nombre": "Labial mate de larga duración",
-      "categoria": "labios",
-      "precio": 120,
-      "descripcion": "Acabado mate que no reseca. Dura toda la tarde sin retoques.",
+      "id": "vichy-capital-soleil-uv-aqua-stick",
+      "nombre": "Vichy Capital Soleil UV Aqua Stick",
+      "categoria": "solares",
+      "precio": 450,
+      "descripcion": "Protector solar en barra, ideal para el retoque diario. Sin color, acabado mate.",
       "imagen": "",
+      "color": "#f2c078",
+      "fuente": "https://www.instagram.com/p/DYSl_rmhWv6/"
+    },
+    {
+      "id": "isdin-fusion-water",
+      "nombre": "ISDIN Fusion Water",
+      "categoria": "solares",
+      "precio": 450,
+      "descripcion": "Textura de crema súper ligera. Le va a todo tipo de piel, en especial mixta a grasa. Muy resistente al agua.",
+      "imagen": "",
+      "color": "#f2c078",
+      "fuente": "https://www.instagram.com/p/DOEyrJdAdS5/"
+    },
+    {
+      "id": "eucerin-sun-oil-control-fps-50",
+      "nombre": "Eucerin Sun Oil Control FPS 50+",
+      "categoria": "solares",
+      "precio": 450,
+      "descripcion": "Apto para todo tipo de piel. Textura ligera de rápida absorción, sin acabado blanco y compatible con el maquillaje.",
+      "imagen": "",
+      "color": "#f2c078",
+      "fuente": "https://www.instagram.com/p/C69O8mqPTCt/"
+    },
+    {
+      "id": "avene-fluido-solar-despigmentante-con-color-fps-",
+      "nombre": "Avène fluido solar despigmentante con color FPS 50+",
+      "categoria": "solares",
+      "precio": 450,
+      "descripcion": "Protector solar con color para sustituir la base. Textura súper ligera, cobertura media, se absorbe casi al instante.",
+      "imagen": "",
+      "color": "#f2c078",
+      "fuente": "https://www.instagram.com/p/DFYFfdZvTiX/",
       "tonos": [
-        { "nombre": "Rosa palo", "color": "#c98a8f" },
-        { "nombre": "Terracota", "color": "#b5593f" },
-        { "nombre": "Rojo clásico", "color": "#b01f2e" },
-        { "nombre": "Vino", "color": "#6e1f33" },
-        { "nombre": "Nude canela", "color": "#b98268" }
+        {
+          "nombre": "Claro",
+          "color": "#e3bd9c"
+        },
+        {
+          "nombre": "Medio",
+          "color": "#c99a73"
+        }
       ]
     },
     {
-      "id": "gloss-brillo",
-      "nombre": "Gloss con brillo espejo",
-      "categoria": "labios",
-      "precio": 95,
-      "descripcion": "Brillo sin sensación pegajosa, con un toque de color.",
+      "id": "tocobo-protector-solar-en-barra",
+      "nombre": "Tocobo protector solar en barra",
+      "categoria": "solares",
+      "precio": 400,
+      "descripcion": "Ideal para el retoque diario, textura ligera y acabado aterciopelado. Para pieles normales a grasas. Con opción a dos pagos.",
       "imagen": "",
-      "tonos": [
-        { "nombre": "Transparente", "color": "#f1d9d2" },
-        { "nombre": "Durazno", "color": "#f0a98a" },
-        { "nombre": "Frambuesa", "color": "#c9456b" }
-      ]
+      "color": "#f2c078",
+      "fuente": "https://www.instagram.com/p/C9BJv-RPVwo/"
     },
     {
-      "id": "delineador-labios",
-      "nombre": "Delineador de labios cremoso",
-      "categoria": "labios",
-      "precio": 60,
-      "descripcion": "Punta suave que define sin jalar. Combina con el labial mate.",
+      "id": "la-roche-posay-anthelios-fluido-con-color-shaka-",
+      "nombre": "La Roche-Posay Anthelios fluido con color Shaka FPS 50+",
+      "categoria": "solares",
+      "precio": 450,
+      "descripcion": "La mayor protección UVA de Anthelios. Muy resistente al agua, al sudor y a la arena; no pica en los ojos. Acabado fino para todo tipo de piel.",
       "imagen": "",
-      "tonos": [
-        { "nombre": "Nude", "color": "#b07b66" },
-        { "nombre": "Café", "color": "#7a4a3a" },
-        { "nombre": "Rojo", "color": "#a3202c" }
-      ]
+      "color": "#f2c078",
+      "fuente": "https://www.instagram.com/p/CNTC4-AhzPX/"
     },
     {
-      "id": "paleta-sombras",
-      "nombre": "Paleta de sombras, 12 tonos",
-      "categoria": "ojos",
-      "precio": 280,
-      "descripcion": "Mates y satinados que se difuminan fácil. Incluye espejo.",
+      "id": "eucerin-sun-cc-crema-con-color-fps-50",
+      "nombre": "Eucerin Sun CC crema con color FPS 50",
+      "categoria": "solares",
+      "precio": 350,
+      "descripcion": "Tono uniforme y natural con acabado matificante al instante. Crema ligera, adecuada para piel sensible.",
       "imagen": "",
-      "tonos": [
-        { "nombre": "Tonos tierra", "color": "#9a6a4c" },
-        { "nombre": "Tonos rosas", "color": "#c98b9b" }
-      ]
+      "color": "#f2c078",
+      "fuente": "https://www.instagram.com/p/CMx8bhvB1fc/"
     },
     {
-      "id": "mascara-volumen",
-      "nombre": "Máscara de pestañas volumen",
-      "categoria": "ojos",
-      "precio": 110,
-      "descripcion": "Da volumen sin grumos. Se retira con agua tibia.",
+      "id": "eucerin-sun-fluido-anti-edad-fps-50",
+      "nombre": "Eucerin Sun Fluido Anti-Edad FPS 50",
+      "categoria": "solares",
+      "precio": 350,
+      "descripcion": "Protector solar diario para todo tipo de piel. Protege y reduce visiblemente los signos de envejecimiento.",
       "imagen": "",
-      "tonos": [
-        { "nombre": "Negro", "color": "#1d1a1a" },
-        { "nombre": "Café", "color": "#4a3128" }
-      ]
+      "color": "#f2c078",
+      "fuente": "https://www.instagram.com/p/CMx8bhvB1fc/"
     },
     {
-      "id": "delineador-liquido",
-      "nombre": "Delineador líquido punta fina",
-      "categoria": "ojos",
-      "precio": 85,
-      "descripcion": "Trazo preciso a prueba de agua.",
+      "id": "bioderma-bloqueador-con-color-fps-50",
+      "nombre": "Bioderma bloqueador con color FPS 50+",
+      "categoria": "solares",
+      "precio": 350,
+      "descripcion": "Para pieles mixtas y grasas.",
       "imagen": "",
+      "color": "#f2c078",
+      "fuente": "https://www.instagram.com/p/CK9ZJVeBkNX/"
+    },
+    {
+      "id": "l-oreal-uv-defender-crema-hidratante-fps-50",
+      "nombre": "L'Oréal UV Defender crema hidratante FPS 50+",
+      "categoria": "solares",
+      "precio": 200,
+      "descripcion": "Crema facial hidratante con ácido hialurónico y efecto anti-brillo. Color claro.",
+      "imagen": "",
+      "color": "#f2c078",
+      "fuente": "https://www.instagram.com/p/COwJJQmhEXw/"
+    },
+    {
+      "id": "la-roche-posay-anthelios-mineral-one-fps-50",
+      "nombre": "La Roche-Posay Anthelios Mineral One FPS 50+",
+      "categoria": "solares",
+      "precio": 350,
+      "descripcion": "Protector de amplio espectro con cobertura media a alta, hasta 8 horas de protección. Apto para todo tipo de piel.",
+      "imagen": "",
+      "color": "#f2c078",
+      "fuente": "https://www.instagram.com/p/CO4lgsPhkje/",
       "agotado": true,
       "tonos": [
-        { "nombre": "Negro", "color": "#151314" }
+        {
+          "nombre": "03",
+          "color": "#d2a47e"
+        },
+        {
+          "nombre": "04",
+          "color": "#b98660"
+        }
       ]
     },
     {
-      "id": "base-ligera",
-      "nombre": "Base ligera acabado natural",
-      "categoria": "rostro",
-      "precio": 220,
-      "descripcion": "Cobertura media que deja ver la piel. Pregunta por tu tono si tienes duda.",
+      "id": "isdin-fotoprotector-en-crema-fps-50-tono-arena",
+      "nombre": "ISDIN Fotoprotector en crema FPS 50, tono arena",
+      "categoria": "solares",
+      "precio": 400,
+      "descripcion": "Protector solar en crema apto para retoque.",
       "imagen": "",
-      "tonos": [
-        { "nombre": "Claro", "color": "#ecc9ab" },
-        { "nombre": "Medio claro", "color": "#dcae89" },
-        { "nombre": "Medio", "color": "#c7926b" },
-        { "nombre": "Canela", "color": "#a8724d" },
-        { "nombre": "Moreno", "color": "#7f5237" }
-      ]
+      "color": "#f2c078",
+      "fuente": "https://www.instagram.com/p/CQ_3ZqmLjKo/",
+      "agotado": true
     },
     {
-      "id": "rubor-crema",
-      "nombre": "Rubor en crema",
-      "categoria": "rostro",
-      "precio": 130,
-      "descripcion": "Se aplica con los dedos y se funde con la piel.",
+      "id": "la-roche-posay-suero-ultra-concentrado",
+      "nombre": "La Roche-Posay suero ultra concentrado",
+      "categoria": "sueros",
+      "precio": 550,
+      "descripcion": "Ayuda a reducir manchas y marcas post acné y a regular la grasa. Es un peeling: solo de noche, cada tercer día, evitando el contorno de ojos.",
       "imagen": "",
-      "tonos": [
-        { "nombre": "Rosa", "color": "#e08f9c" },
-        { "nombre": "Durazno", "color": "#eb9a78" },
-        { "nombre": "Malva", "color": "#b56b80" }
-      ]
+      "color": "#c9b8e8",
+      "fuente": "https://www.instagram.com/p/C976Bk-PdR-/"
     },
     {
-      "id": "iluminador",
-      "nombre": "Iluminador en polvo",
-      "categoria": "rostro",
-      "precio": 140,
-      "descripcion": "Brillo fino para pómulos y lagrimal.",
+      "id": "la-roche-posay-niacinamida-pura-10-30-ml",
+      "nombre": "La Roche-Posay Niacinamida pura 10 %, 30 ml",
+      "categoria": "sueros",
+      "precio": 590,
+      "descripcion": "Compatible con todos los tipos de piel, incluso sensibles y grasas. Ayuda con las manchas de sol o acné e hidrata sin ser pegajosa.",
       "imagen": "",
-      "tonos": [
-        { "nombre": "Champaña", "color": "#ecd3b0" },
-        { "nombre": "Dorado", "color": "#d9ae6c" }
-      ]
+      "color": "#c9b8e8",
+      "fuente": "https://www.instagram.com/p/C6cPunuPfuE/"
     },
     {
-      "id": "agua-micelar",
-      "nombre": "Agua micelar desmaquillante",
-      "categoria": "cuidado",
-      "precio": 150,
-      "descripcion": "Retira el maquillaje sin tallar. Botella de 200 ml.",
+      "id": "l-oreal-revitalift-acido-hialuronico-suero-crema",
+      "nombre": "L'Oréal Revitalift Ácido Hialurónico, suero + crema",
+      "categoria": "sueros",
+      "precio": 450,
+      "descripcion": "Rutina hidratante para principiantes, para todo tipo de piel.",
       "imagen": "",
-      "color": "#bcd4d6"
+      "color": "#c9b8e8",
+      "fuente": "https://www.instagram.com/p/C2QGDqevy3-/"
     },
     {
-      "id": "serum-hidratante",
-      "nombre": "Sérum hidratante",
-      "categoria": "cuidado",
+      "id": "vichy-liftactiv-supreme-ha",
+      "nombre": "Vichy Liftactiv Supreme HA",
+      "categoria": "sueros",
+      "precio": 590,
+      "descripcion": "Ácido hialurónico concentrado de bajo y alto peso molecular. Apto para todo tipo de piel, incluso las más sensibles.",
+      "imagen": "",
+      "color": "#c9b8e8",
+      "fuente": "https://www.instagram.com/p/CY4dKGgvWjP/",
+      "agotado": true
+    },
+    {
+      "id": "muestra-vichy-liftactiv-h-a-epidermic-filler",
+      "nombre": "Muestra Vichy Liftactiv H.A. Epidermic Filler",
+      "categoria": "sueros",
+      "precio": 65,
+      "descripcion": "Sérum con 1.5 % de ácido hialurónico puro que hidrata, rellena y reafirma. Textura líquida de rápida absorción. 12 piezas por $600.",
+      "imagen": "",
+      "color": "#c9b8e8",
+      "fuente": "https://www.instagram.com/p/COf8Xjwh2UC/",
+      "agotado": true
+    },
+    {
+      "id": "eucerin-cc-cream-fps-15",
+      "nombre": "Eucerin CC Cream FPS 15",
+      "categoria": "cremas",
+      "precio": 350,
+      "descripcion": "Unifica el tono con micropigmentos de color, humecta y protege del sol. Con ácido hialurónico de alto y bajo peso molecular.",
+      "imagen": "",
+      "color": "#f3d5c0",
+      "fuente": "https://www.instagram.com/p/COOE3wRhyJz/"
+    },
+    {
+      "id": "kit-cicatricure",
+      "nombre": "Kit Cicatricure",
+      "categoria": "cremas",
+      "precio": 300,
+      "descripcion": "Crema facial de día hidratante anti-edad, contorno de ojos y base de maquillaje adaptable al tono de piel.",
+      "imagen": "",
+      "color": "#f3d5c0",
+      "fuente": "https://www.instagram.com/p/CO4nYJfBdss/"
+    },
+    {
+      "id": "avene-agua-termal-en-spray",
+      "nombre": "Avène agua termal en spray",
+      "categoria": "cremas",
       "precio": 190,
-      "descripcion": "Textura ligera para usar antes del maquillaje.",
+      "descripcion": "Indicada para pieles sensibles, hipersensibles, alérgicas o irritadas.",
       "imagen": "",
-      "color": "#e6cf9a"
+      "color": "#f3d5c0",
+      "fuente": "https://www.instagram.com/p/CO58GKeB1EP/",
+      "agotado": true
     },
     {
-      "id": "set-brochas",
-      "nombre": "Set de 8 brochas",
-      "categoria": "accesorios",
-      "precio": 250,
-      "descripcion": "Para rostro y ojos, con estuche.",
+      "id": "eclipsol-fps-50",
+      "nombre": "Eclipsol FPS 50",
+      "categoria": "cuerpo",
+      "precio": null,
+      "descripcion": "Nuestro favorito para el cuerpo. Resistente al agua, sin perfume.",
       "imagen": "",
-      "color": "#c9a79b"
+      "color": "#bcd4d6",
+      "fuente": "https://www.instagram.com/p/CM0t8k6BbQ0/"
     },
     {
-      "id": "esponja",
-      "nombre": "Esponja para difuminar",
-      "categoria": "accesorios",
-      "precio": 45,
-      "descripcion": "Úsala húmeda para un acabado parejo.",
+      "id": "eucerin-ph5-skin-protection-gel-de-bano-400-ml",
+      "nombre": "Eucerin pH5 Skin Protection gel de baño, 400 ml",
+      "categoria": "cuerpo",
+      "precio": null,
+      "descripcion": "Jabón sin alcalinos para el cuidado diario. Limpia e hidrata; apto para pieles sensibles de adultos y bebés.",
       "imagen": "",
-      "color": "#e7a3a8"
+      "color": "#bcd4d6",
+      "fuente": "https://www.instagram.com/p/CMwBe2pBxPV/"
+    },
+    {
+      "id": "eucerin-crema-para-piel-seca-a-extra-seca-198-g",
+      "nombre": "Eucerin crema para piel seca a extra seca, 198 g",
+      "categoria": "cuerpo",
+      "precio": 190,
+      "descripcion": "Ideal para las partes con mayor resequedad como codos, manos y pies. Producto dermatológico, sin parabenos.",
+      "imagen": "",
+      "color": "#bcd4d6",
+      "fuente": "https://www.instagram.com/p/CLxTmyQhN09/"
+    },
+    {
+      "id": "gd3-tratamiento-con-aceite-de-argan-240-ml",
+      "nombre": "GD3 tratamiento con aceite de argán, 240 ml",
+      "categoria": "cabello",
+      "precio": 350,
+      "descripcion": "El aceite de argán de siempre en su nueva presentación GD3.",
+      "imagen": "",
+      "color": "#d9a441",
+      "fuente": "https://www.instagram.com/p/DL-wCbhvpWX/"
+    },
+    {
+      "id": "maybelline-superstay-vinyl-ink",
+      "nombre": "Maybelline SuperStay Vinyl Ink",
+      "categoria": "maquillaje",
+      "precio": 180,
+      "descripcion": "Labial con acabado súper brilloso y duración de hasta 24 horas. Pregunta por los tonos disponibles.",
+      "imagen": "",
+      "color": "#c98a8f",
+      "fuente": "https://www.instagram.com/p/C0r6lFVPmSl/"
+    },
+    {
+      "id": "maybelline-sky-high-rimel-a-prueba-de-agua",
+      "nombre": "Maybelline Sky High rímel a prueba de agua",
+      "categoria": "maquillaje",
+      "precio": 210,
+      "descripcion": "El rímel que estuvo por todo internet.",
+      "imagen": "",
+      "color": "#c98a8f",
+      "fuente": "https://www.instagram.com/p/CRkRyxCBiB9/"
+    },
+    {
+      "id": "l-oreal-infaillible-24h-fresh-wear",
+      "nombre": "L'Oréal Infaillible 24H Fresh Wear",
+      "categoria": "maquillaje",
+      "precio": 200,
+      "descripcion": "Base de larga duración y acabado natural. Alta cobertura, resiste el agua y no se transfiere. Pregunta por tu tono.",
+      "imagen": "",
+      "color": "#c98a8f",
+      "fuente": "https://www.instagram.com/p/COVnwszhm5u/"
+    },
+    {
+      "id": "iluminadores-milani",
+      "nombre": "Iluminadores Milani",
+      "categoria": "maquillaje",
+      "precio": 200,
+      "descripcion": "",
+      "imagen": "",
+      "color": "#c98a8f",
+      "fuente": "https://www.instagram.com/p/CP_1m-ahhB2/"
+    },
+    {
+      "id": "rimel-l-oreal",
+      "nombre": "Rímel L'Oréal",
+      "categoria": "maquillaje",
+      "precio": 180,
+      "descripcion": "",
+      "imagen": "",
+      "color": "#c98a8f",
+      "fuente": "https://www.instagram.com/p/CJo3BLzhi15/"
+    },
+    {
+      "id": "mascaras-de-pestanas-maybelline-varios-modelos",
+      "nombre": "Máscaras de pestañas Maybelline, varios modelos",
+      "categoria": "maquillaje",
+      "precio": 165,
+      "descripcion": "Pregunta por los modelos disponibles.",
+      "imagen": "",
+      "color": "#c98a8f",
+      "fuente": "https://www.instagram.com/p/CD4GsMaB_Lt/"
     }
   ]
 }

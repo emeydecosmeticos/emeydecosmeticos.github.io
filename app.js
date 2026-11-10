@@ -17,6 +17,8 @@
   let current = null;       // producto abierto en la hoja
   let currentTone = null, currentQty = 1;
   let money = (n) => '$' + n;
+  const PENDING = 'Precio por confirmar';
+  const priceOf = (p, qty = 1) => (p.precio == null ? PENDING : money(p.precio * qty));
 
   // ---------- datos ----------
   async function load() {
@@ -83,7 +85,7 @@
     return products.filter((p) => {
       if (filter.cat !== 'todo' && p.categoria !== filter.cat) return false;
       if (!q) return true;
-      const hay = norm([p.nombre, p.descripcion, ...(p.tonos || []).map((t) => t.nombre)].join(' '));
+      const hay = norm([p.nombre, p.descripcion, (categories.find((c) => c.id === p.categoria) || {}).nombre || '', ...(p.tonos || []).map((t) => t.nombre)].join(' '));
       return hay.includes(q);
     });
   }
@@ -144,7 +146,7 @@
       card.append(mediaFor(p, null, 'card__media'));
       card.append(el('span', 'card__name', p.nombre));
       const meta = el('span', 'card__meta');
-      meta.append(el('span', 'card__price', money(p.precio)));
+      meta.append(el('span', 'card__price', priceOf(p)));
       const n = (p.tonos || []).length;
       if (n > 1) meta.append(el('span', 'card__tones', n + ' tonos'));
       card.append(meta);
@@ -160,7 +162,7 @@
     currentTone = (p.tonos && p.tonos[0]) || null;
     currentQty = 1;
     $('ps-name').textContent = p.nombre;
-    $('ps-price').textContent = money(p.precio);
+    $('ps-price').textContent = priceOf(p);
     $('ps-desc').textContent = p.descripcion || '';
     renderProductSheet();
     history.replaceState(null, '', location.pathname + location.search + '#p=' + encodeURIComponent(p.id));
@@ -212,7 +214,12 @@
   }
   const productOf = (line) => products.find((p) => p.id === line.id);
   const toneOf = (line) => (productOf(line).tonos || []).find((t) => t.nombre === line.tono) || null;
-  const cartTotal = () => cart.reduce((s, l) => s + productOf(l).precio * l.cantidad, 0);
+  const cartTotal = () => cart.reduce((s, l) => s + (productOf(l).precio || 0) * l.cantidad, 0);
+  const totalText = () => {
+    const pending = cart.some((l) => productOf(l).precio == null);
+    if (pending && cartTotal() === 0) return 'Por confirmar';
+    return money(cartTotal()) + (pending ? ' + por confirmar' : '');
+  };
   const cartUnits = () => cart.reduce((s, l) => s + l.cantidad, 0);
 
   function addToCart(p, tone, qty) {
@@ -229,7 +236,7 @@
     count.textContent = units;
     $('cartbar').hidden = units === 0;
     $('cartbar-label').textContent = 'Ver pedido (' + units + ')';
-    $('cartbar-total').textContent = money(cartTotal());
+    $('cartbar-total').textContent = totalText();
   }
 
   function renderCart() {
@@ -245,7 +252,7 @@
       const text = el('div');
       text.append(el('div', 'line__name', p.nombre));
       if (line.tono) text.append(el('div', 'line__tone', 'Tono ' + line.tono));
-      const price = el('div', 'line__price fig', money(p.precio * line.cantidad));
+      const price = el('div', 'line__price fig', priceOf(p, line.cantidad));
 
       const stepper = el('div', 'stepper');
       const minus = el('button'); minus.type = 'button'; minus.setAttribute('aria-label', 'Quitar uno'); minus.textContent = '−';
@@ -262,7 +269,7 @@
       li.append(chip, text, price, stepper, remove);
       return li;
     }));
-    $('cs-total').textContent = money(cartTotal());
+    $('cs-total').textContent = totalText();
     $('cs-send').href = waLink(orderMessage());
   }
 
@@ -281,10 +288,10 @@
   function orderMessage() {
     const lines = cart.map((l) => {
       const p = productOf(l);
-      return '- ' + l.cantidad + ' x ' + p.nombre + (l.tono ? ' (' + l.tono + ')' : '') + ': ' + money(p.precio * l.cantidad);
+      return '- ' + l.cantidad + ' x ' + p.nombre + (l.tono ? ' (' + l.tono + ')' : '') + ': ' + priceOf(p, l.cantidad).toLowerCase();
     });
     const note = $('cs-note').value.trim();
-    return ['Hola! Quiero hacer este pedido:', '', ...lines, '', 'Total: ' + money(cartTotal()), ...(note ? ['', 'Nota: ' + note] : [])].join('\n');
+    return ['Hola! Quiero hacer este pedido:', '', ...lines, '', 'Total: ' + totalText(), ...(note ? ['', 'Nota: ' + note] : [])].join('\n');
   }
 
   // ---------- avisos ----------
