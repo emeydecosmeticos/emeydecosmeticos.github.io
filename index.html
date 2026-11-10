@@ -5,8 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Eme y De | Catálogo</title>
   <meta name="description" content="Skincare y maquillaje de Eme y De. Elige tus productos y manda tu pedido por WhatsApp.">
-  <meta name="theme-color" content="#f6f3f0">
+  <meta name="theme-color" content="#f6f3f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1614" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <meta name="format-detection" content="telephone=no">
   <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
@@ -21,24 +26,26 @@
         <span class="iconbtn__count" id="cart-count" hidden>0</span>
       </button>
     </div>
+  </header>
+
+  <div class="tools">
     <div class="wrap">
       <label class="search">
         <span class="visually-hidden">Buscar producto</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
-        <input id="search" type="search" placeholder="Buscar protector, suero, rímel" autocomplete="off" enterkeyhint="search">
+        <input id="search" type="search" placeholder="Buscar protector, suero, rímel" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="search">
       </label>
     </div>
-  </header>
-
-  <nav class="chips" aria-label="Categorías">
-    <div class="wrap chips__row" id="chips"></div>
-  </nav>
+    <nav class="chips" aria-label="Categorías">
+      <div class="wrap chips__row" id="chips"></div>
+    </nav>
+  </div>
 
   <main class="wrap">
     <p class="notice" id="notice" hidden>Catálogo en preparación. Confirma precio y disponibilidad por WhatsApp.</p>
     <p class="count" id="result-count" aria-live="polite"></p>
     <div class="grid" id="grid" aria-busy="true">
-      <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+      <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
     </div>
     <noscript>
       <p class="state">Este catálogo necesita JavaScript. Mientras tanto puedes ver los productos en <a href="https://www.instagram.com/eme_y_de/">Instagram</a>.</p>
@@ -57,10 +64,9 @@
   </div>
 
   <dialog class="sheet" id="product-sheet" aria-labelledby="ps-name">
-    <div class="sheet__body">
-      <button class="iconbtn sheet__close" type="button" data-close aria-label="Cerrar">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
-      </button>
+    <div class="sheet__grab" aria-hidden="true"></div>
+    <button class="iconbtn sheet__close" type="button" data-close aria-label="Cerrar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <div class="sheet__scroll">
       <div class="sheet__media" id="ps-media"></div>
       <div class="sheet__text">
         <h2 id="ps-name"></h2>
@@ -71,40 +77,42 @@
         <legend>Tono: <span id="ps-tone-name"></span></legend>
         <div class="tones__row" id="ps-tones"></div>
       </fieldset>
-      <div class="sheet__actions">
-        <div class="stepper" id="ps-stepper">
-          <button type="button" data-step="-1" aria-label="Quitar uno">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>
-          </button>
-          <output class="fig" id="ps-qty" aria-live="polite">1</output>
-          <button type="button" data-step="1" aria-label="Agregar uno">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12M12 6v12"/></svg>
-          </button>
-        </div>
-        <button class="btn btn--ink" id="ps-add" type="button">Agregar al pedido</button>
+      <div class="sheet__links">
+        <a class="asklink" id="ps-ask" href="#" target="_blank" rel="noopener">Preguntar por WhatsApp</a>
+        <button class="textbtn" id="ps-share" type="button">Compartir producto</button>
       </div>
-      <a class="asklink" id="ps-ask" href="#" target="_blank" rel="noopener">Preguntar por este producto en WhatsApp</a>
+    </div>
+    <div class="sheet__bar sheet__actions">
+      <div class="stepper" id="ps-stepper">
+        <button type="button" data-step="-1" aria-label="Quitar uno">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>
+        </button>
+        <output class="fig" id="ps-qty" aria-live="polite">1</output>
+        <button type="button" data-step="1" aria-label="Agregar uno">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12M12 6v12"/></svg>
+        </button>
+      </div>
+      <button class="btn btn--ink" id="ps-add" type="button">Agregar al pedido</button>
     </div>
   </dialog>
 
   <dialog class="sheet" id="cart-sheet" aria-labelledby="cs-title">
-    <div class="sheet__body">
-      <button class="iconbtn sheet__close" type="button" data-close aria-label="Cerrar">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
-      </button>
+    <div class="sheet__grab" aria-hidden="true"></div>
+    <button class="iconbtn sheet__close" type="button" data-close aria-label="Cerrar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <div class="sheet__scroll">
       <h2 id="cs-title">Mi pedido</h2>
       <p class="state" id="cs-empty" hidden>Todavía no agregas nada. Toca un producto para elegir tono y cantidad.</p>
       <ul class="lines" id="cs-lines"></ul>
-      <div id="cs-foot" hidden>
-        <label class="note">
-          <span>Nota para el pedido (opcional)</span>
-          <textarea id="cs-note" rows="2" placeholder="Entrega, dudas de tono, regalo"></textarea>
-        </label>
-        <p class="total"><span>Total</span><span class="fig" id="cs-total"></span></p>
-        <a class="btn btn--ink btn--wide" id="cs-send" href="#" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
-        <p class="fine">Se abre WhatsApp con tu lista escrita. Tú decides si la envías.</p>
-        <button class="textbtn" id="cs-clear" type="button">Vaciar pedido</button>
-      </div>
+      <label class="note" id="cs-note-wrap">
+        <span>Nota para el pedido (opcional)</span>
+        <textarea id="cs-note" rows="2" placeholder="Entrega, dudas de tono, regalo"></textarea>
+      </label>
+      <button class="textbtn" id="cs-clear" type="button">Vaciar pedido</button>
+    </div>
+    <div class="sheet__bar" id="cs-foot" hidden>
+      <p class="total"><span>Total</span><span class="fig" id="cs-total"></span></p>
+      <a class="btn btn--ink btn--wide" id="cs-send" href="#" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
+      <p class="fine">Se abre WhatsApp con tu lista escrita. Tú decides si la envías.</p>
     </div>
   </dialog>
 

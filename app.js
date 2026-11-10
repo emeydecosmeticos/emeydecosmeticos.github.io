@@ -100,10 +100,19 @@
       b.setAttribute('aria-pressed', String(filter.cat === c.id));
       b.addEventListener('click', () => {
         filter.cat = c.id;
-        writeUrl(); renderChips(); renderGrid();
+        writeUrl(); renderChips(); renderGrid(); scrollToGrid();
       });
       return b;
     }));
+    const active = row.querySelector('[aria-pressed="true"]');
+    if (active) row.scrollTo({ left: active.offsetLeft - row.clientWidth / 2 + active.offsetWidth / 2 });
+  }
+
+  // al cambiar de categoría, la lista vuelve arriba (sin animación: es una acción frecuente)
+  function scrollToGrid() {
+    const tools = document.querySelector('.tools');
+    const top = $('grid').getBoundingClientRect().top + window.scrollY - tools.offsetHeight - 56;
+    if (window.scrollY > top) window.scrollTo(0, Math.max(0, top));
   }
 
   // ---------- la ficha de tono / foto ----------
@@ -140,7 +149,7 @@
       }));
       return;
     }
-    grid.replaceChildren(...list.map((p) => {
+    const makeCard = (p) => {
       const card = el('button', 'card' + (p.agotado ? ' is-out' : ''));
       card.type = 'button';
       card.append(mediaFor(p, null, 'card__media'));
@@ -153,11 +162,48 @@
       if (p.agotado) card.append(el('span', 'badge', 'Agotado'));
       card.addEventListener('click', () => openProduct(p));
       return card;
-    }));
+    };
+    let nodes = [];
+    if (filter.cat === 'todo' && !filter.q.trim()) {
+      // todo el catálogo: agrupado por categoría, con su título
+      categories.forEach((c) => {
+        const items = list.filter((p) => p.categoria === c.id);
+        if (items.length) nodes.push(el('h2', 'group-title', c.nombre), ...items.map(makeCard));
+      });
+      nodes.push(...list.filter((p) => !categories.some((c) => c.id === p.categoria)).map(makeCard));
+    } else {
+      nodes = list.map(makeCard);
+    }
+    grid.replaceChildren(...nodes);
+  }
+
+  // ---------- hojas: el botón atrás del teléfono las cierra ----------
+  let pendingBack = false, queued = null;
+  function showSheet(dlg, hash, fromUrl) {
+    if (pendingBack) { queued = () => showSheet(dlg, hash, fromUrl); return; }
+    if (!fromUrl && location.hash !== hash) history.pushState({ sheet: true }, '', location.pathname + location.search + hash);
+    clearTimeout(dlg.closeTimer);
+    dlg.classList.remove('is-closing', 'is-settling');
+    dlg.style.transform = '';
+    if (!dlg.open) dlg.showModal();
+    const sc = dlg.querySelector('.sheet__scroll');
+    if (sc) sc.scrollTop = 0;
+  }
+  function hideSheet(dlg) {
+    // si la hoja entró al historial, cerrarla es "atrás"; popstate hace la animación
+    if (history.state && history.state.sheet && location.hash) { pendingBack = true; history.back(); return; }
+    animateClose(dlg);
+  }
+  function animateClose(dlg) {
+    if (!dlg.open || dlg.classList.contains('is-closing')) return;
+    const done = () => { dlg.classList.remove('is-closing', 'is-settling'); dlg.style.transform = ''; if (dlg.open) dlg.close(); };
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { done(); return; }
+    dlg.classList.add('is-closing');
+    dlg.closeTimer = setTimeout(done, 170);
   }
 
   // ---------- hoja de producto ----------
-  function openProduct(p) {
+  function openProduct(p, fromUrl) {
     current = p;
     currentTone = (p.tonos && p.tonos[0]) || null;
     currentQty = 1;
@@ -165,9 +211,7 @@
     $('ps-price').textContent = priceOf(p);
     $('ps-desc').textContent = p.descripcion || '';
     renderProductSheet();
-    history.replaceState(null, '', location.pathname + location.search + '#p=' + encodeURIComponent(p.id));
-    const dlg = $('product-sheet');
-    if (!dlg.open) dlg.showModal();
+    showSheet($('product-sheet'), '#p=' + encodeURIComponent(p.id), fromUrl);
   }
 
   function renderProductSheet() {
@@ -196,10 +240,11 @@
   }
 
   function openFromHash() {
+    if (location.hash === '#pedido') { openCart(true); return; }
     const m = location.hash.match(/^#p=(.+)$/);
     if (!m) return;
     const p = products.find((x) => x.id === decodeURIComponent(m[1]));
-    if (p) openProduct(p);
+    if (p) openProduct(p, true);
   }
 
   // ---------- pedido ----------
@@ -227,6 +272,9 @@
     const line = cart.find((l) => l.id === p.id && l.tono === tono);
     if (line) line.cantidad += qty; else cart.push({ id: p.id, tono, cantidad: qty });
     saveCart(); renderCartBadge();
+    if (navigator.vibrate) navigator.vibrate(8);
+    const badge = $('cart-count');
+    badge.classList.remove('bump'); void badge.offsetWidth; badge.classList.add('bump');
   }
 
   function renderCartBadge() {
@@ -243,6 +291,8 @@
     const empty = cart.length === 0;
     $('cs-empty').hidden = !empty;
     $('cs-foot').hidden = empty;
+    $('cs-note-wrap').hidden = empty;
+    $('cs-clear').hidden = empty;
     $('cs-lines').replaceChildren(...cart.map((line) => {
       const p = productOf(line), tone = toneOf(line);
       const li = el('li', 'line');
@@ -321,11 +371,11 @@
   $('ps-add').addEventListener('click', () => {
     if (!current || current.agotado) return;
     addToCart(current, currentTone, currentQty);
-    $('product-sheet').close();
+    hideSheet($('product-sheet'));
     toast('Agregado al pedido');
   });
 
-  const openCart = () => { renderCart(); $('cart-sheet').showModal(); };
+  function openCart(fromUrl) { renderCart(); showSheet($('cart-sheet'), '#pedido', fromUrl === true); }
   $('open-cart').addEventListener('click', openCart);
   $('cartbar-btn').addEventListener('click', openCart);
   $('cs-note').addEventListener('input', () => { $('cs-send').href = waLink(orderMessage()); });
@@ -334,13 +384,56 @@
     cart = []; saveCart(); renderCartBadge(); renderCart();
   });
 
+  $('search').addEventListener('keydown', (e) => { if (e.key === 'Enter') e.target.blur(); });
+
+  $('ps-share').addEventListener('click', async () => {
+    if (!current) return;
+    const url = location.origin + location.pathname + '#p=' + encodeURIComponent(current.id);
+    try {
+      if (navigator.share) await navigator.share({ title: current.nombre, text: current.nombre, url });
+      else { await navigator.clipboard.writeText(url); toast('Enlace copiado'); }
+    } catch (e) { /* la persona canceló */ }
+  });
+
   document.querySelectorAll('dialog.sheet').forEach((dlg) => {
     dlg.addEventListener('click', (e) => {
-      if (e.target === dlg || e.target.closest('[data-close]')) dlg.close();
+      if (e.target === dlg || e.target.closest('[data-close]')) hideSheet(dlg);
     });
+    dlg.addEventListener('cancel', (e) => { e.preventDefault(); hideSheet(dlg); });
+    dlg.addEventListener('close', () => {
+      if (location.hash && !(history.state && history.state.sheet)) history.replaceState(null, '', location.pathname + location.search);
+    });
+
+    // arrastrar hacia abajo desde el asa para cerrar
+    const grab = dlg.querySelector('.sheet__grab');
+    let startY = 0, dy = 0, t0 = 0, dragging = false;
+    grab.addEventListener('pointerdown', (e) => {
+      dragging = true; startY = e.clientY; dy = 0; t0 = e.timeStamp;
+      grab.setPointerCapture(e.pointerId);
+      dlg.classList.remove('is-settling');
+    });
+    grab.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      dy = Math.max(0, e.clientY - startY);
+      dlg.style.transform = 'translateY(' + dy + 'px)';
+    });
+    const release = (e) => {
+      if (!dragging) return;
+      dragging = false;
+      const speed = dy / Math.max(1, e.timeStamp - t0);
+      if (dy > 110 || (speed > 0.5 && dy > 30)) { hideSheet(dlg); return; }
+      dlg.classList.add('is-settling');
+      dlg.style.transform = '';
+    };
+    grab.addEventListener('pointerup', release);
+    grab.addEventListener('pointercancel', release);
   });
-  $('product-sheet').addEventListener('close', () => {
-    history.replaceState(null, '', location.pathname + location.search);
+
+  window.addEventListener('popstate', () => {
+    pendingBack = false;
+    if (!location.hash) document.querySelectorAll('dialog.sheet[open]').forEach(animateClose);
+    else openFromHash();
+    if (queued) { const run = queued; queued = null; run(); }
   });
 
   load();
