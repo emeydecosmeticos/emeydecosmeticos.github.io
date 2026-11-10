@@ -21,11 +21,34 @@
   const priceOf = (p, qty = 1) => (p.precio == null ? PENDING : money(p.precio * qty));
 
   // ---------- datos ----------
+  // URL del Worker de Cloudflare que entrega el catálogo desde el repositorio privado.
+  // Vacío = se usa el products.json que viene con el sitio.
+  const API_URL = 'https://emeyde-catalogo-datos.chinos-account.workers.dev/';
+
+  async function fetchJson(url, ms) {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), ms);
+    try {
+      const res = await fetch(url, { signal: ctl.signal, cache: 'no-cache' });
+      if (!res.ok) throw new Error(res.status);
+      return await res.json();
+    } finally { clearTimeout(timer); }
+  }
+
+  // Primero el Worker; si falla o tarda, la copia de respaldo del sitio.
+  async function getCatalog() {
+    if (API_URL) {
+      try {
+        const data = await fetchJson(API_URL, 5000);
+        if (data && Array.isArray(data.productos) && data.productos.length) return data;
+      } catch (e) { /* se usa el respaldo */ }
+    }
+    return fetchJson('products.json', 10000);
+  }
+
   async function load() {
     try {
-      const res = await fetch('products.json', { cache: 'no-cache' });
-      if (!res.ok) throw new Error(res.status);
-      const data = await res.json();
+      const data = await getCatalog();
       store = data.tienda || {};
       categories = data.categorias || [];
       products = data.productos || [];
