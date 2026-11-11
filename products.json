@@ -9,7 +9,7 @@
   },
   "categorias": [
     {
-      "id": "solares",
+      "id": "bloqueadores",
       "nombre": "Protectores solares"
     },
     {
@@ -17,8 +17,16 @@
       "nombre": "Sueros"
     },
     {
-      "id": "cremas",
-      "nombre": "Cremas y rostro"
+      "id": "cremas-hidratantes-1",
+      "nombre": "Cremas hidratantes"
+    },
+    {
+      "id": "contorno-de-ojos-1",
+      "nombre": "Contorno de ojos"
+    },
+    {
+      "id": "hidratantes-de-labios",
+      "nombre": "Hidratantes de labios"
     },
     {
       "id": "cuerpo",
@@ -35,329 +43,1006 @@
   ],
   "productos": [
     {
-      "id": "vichy-capital-soleil-uv-aqua-stick",
-      "nombre": "Vichy Capital Soleil UV Aqua Stick",
-      "categoria": "solares",
-      "precio": 450,
-      "descripcion": "Protector solar en barra, ideal para el retoque diario. Sin color, acabado mate.",
-      "imagen": "",
-      "color": "#f2c078",
-      "fuente": "https://www.instagram.com/p/DYSl_rmhWv6/"
-    },
-    {
-      "id": "isdin-fusion-water",
-      "nombre": "ISDIN Fusion Water",
-      "categoria": "solares",
-      "precio": 450,
-      "descripcion": "Textura de crema súper ligera. Le va a todo tipo de piel, en especial mixta a grasa. Muy resistente al agua.",
-      "imagen": "",
-      "color": "#f2c078",
-      "fuente": "https://www.instagram.com/p/DOEyrJdAdS5/"
-    },
-    {
-      "id": "eucerin-sun-oil-control-fps-50",
-      "nombre": "Eucerin Sun Oil Control FPS 50+",
-      "categoria": "solares",
-      "precio": 450,
-      "descripcion": "Apto para todo tipo de piel. Textura ligera de rápida absorción, sin acabado blanco y compatible con el maquillaje.",
-      "imagen": "",
-      "color": "#f2c078",
-      "fuente": "https://www.instagram.com/p/C69O8mqPTCt/"
-    },
-    {
-      "id": "avene-fluido-solar-despigmentante-con-color-fps-",
-      "nombre": "Avène fluido solar despigmentante con color FPS 50+",
-      "categoria": "solares",
-      "precio": 450,
-      "descripcion": "Protector solar con color para sustituir la base. Textura súper ligera, cobertura media, se absorbe casi al instante.",
-      "imagen": "",
-      "color": "#f2c078",
-      "fuente": "https://www.instagram.com/p/DFYFfdZvTiX/",
-      "tonos": [
-        {
-          "nombre": "Claro",
-          "color": "#e3bd9c"
-        },
-        {
-          "nombre": "Medio",
-          "color": "#c99a73"
-        }
+      "id": "tocobo-sun-steck",
+      "nombre": "TOCOBO sun steck",
+      "marca": "",
+      "categoria": "bloqueadores",
+      "categorias": [
+        "bloqueadores"
+      ],
+      "precio": 420,
+      "descripcion": "si lo que buscas es un protector solar relajante que sea suave y como si no tuveras nada sobre la piel, prueba el tocobo Sun Stick con extracto de algodón para un acabado suave y sin ser pegajoso SPF 50+ PA+++ | Protección UV A/B fiable y estable con buena portabilidad. Sin crueldad animal y certificación vegana.",
+      "sku": "MDBLO0015",
+      "imagen": "images/tocobo-sun-steck-1.webp",
+      "imagenes": [
+        "images/tocobo-sun-steck-1.webp",
+        "images/tocobo-sun-steck-2.webp",
+        "images/tocobo-sun-steck-3.webp"
       ]
     },
     {
-      "id": "tocobo-protector-solar-en-barra",
-      "nombre": "Tocobo protector solar en barra",
-      "categoria": "solares",
-      "precio": 400,
-      "descripcion": "Ideal para el retoque diario, textura ligera y acabado aterciopelado. Para pieles normales a grasas. Con opción a dos pagos.",
-      "imagen": "",
-      "color": "#f2c078",
-      "fuente": "https://www.instagram.com/p/C9BJv-RPVwo/"
-    },
-    {
-      "id": "la-roche-posay-anthelios-fluido-con-color-shaka-",
-      "nombre": "La Roche-Posay Anthelios fluido con color Shaka FPS 50+",
-      "categoria": "solares",
-      "precio": 450,
-      "descripcion": "La mayor protección UVA de Anthelios. Muy resistente al agua, al sudor y a la arena; no pica en los ojos. Acabado fino para todo tipo de piel.",
-      "imagen": "",
-      "color": "#f2c078",
-      "fuente": "https://www.instagram.com/p/CNTC4-AhzPX/"
-    },
-    {
-      "id": "eucerin-sun-cc-crema-con-color-fps-50",
-      "nombre": "Eucerin Sun CC crema con color FPS 50",
-      "categoria": "solares",
-      "precio": 350,
-      "descripcion": "Tono uniforme y natural con acabado matificante al instante. Crema ligera, adecuada para piel sensible.",
-      "imagen": "",
-      "color": "#f2c078",
-      "fuente": "https://www.instagram.com/p/CMx8bhvB1fc/"
-    },
-    {
-      "id": "eucerin-sun-fluido-anti-edad-fps-50",
-      "nombre": "Eucerin Sun Fluido Anti-Edad FPS 50",
-      "categoria": "solares",
-      "precio": 350,
-      "descripcion": "Protector solar diario para todo tipo de piel. Protege y reduce visiblemente los signos de envejecimiento.",
-      "imagen": "",
-      "color": "#f2c078",
-      "fuente": "https://www.instagram.com/p/CMx8bhvB1fc/"
-    },
-    {
-      "id": "bioderma-bloqueador-con-color-fps-50",
-      "nombre": "Bioderma bloqueador con color FPS 50+",
-      "categoria": "solares",
-      "precio": 350,
-      "descripcion": "Para pieles mixtas y grasas.",
-      "imagen": "",
-      "color": "#f2c078",
-      "fuente": "https://www.instagram.com/p/CK9ZJVeBkNX/"
-    },
-    {
-      "id": "l-oreal-uv-defender-crema-hidratante-fps-50",
-      "nombre": "L'Oréal UV Defender crema hidratante FPS 50+",
-      "categoria": "solares",
-      "precio": 200,
-      "descripcion": "Crema facial hidratante con ácido hialurónico y efecto anti-brillo. Color claro.",
-      "imagen": "",
-      "color": "#f2c078",
-      "fuente": "https://www.instagram.com/p/COwJJQmhEXw/"
-    },
-    {
-      "id": "la-roche-posay-anthelios-mineral-one-fps-50",
-      "nombre": "La Roche-Posay Anthelios Mineral One FPS 50+",
-      "categoria": "solares",
-      "precio": 350,
-      "descripcion": "Protector de amplio espectro con cobertura media a alta, hasta 8 horas de protección. Apto para todo tipo de piel.",
-      "imagen": "",
-      "color": "#f2c078",
-      "fuente": "https://www.instagram.com/p/CO4lgsPhkje/",
-      "agotado": true,
-      "tonos": [
-        {
-          "nombre": "03",
-          "color": "#d2a47e"
-        },
-        {
-          "nombre": "04",
-          "color": "#b98660"
-        }
+      "id": "uv-defender-loreal",
+      "nombre": "UV Defender Loreal",
+      "marca": "",
+      "categoria": "bloqueadores",
+      "categorias": [
+        "bloqueadores"
+      ],
+      "precio": 240,
+      "descripcion": "Tecnología Netlock, la mejor sensorialidad con la más alta protección UV, y contiene Ácido Hialurónico para efceto hidratante sobre la piel. OJO: agita la botella antes de aplicar.",
+      "sku": "MDBLO0014",
+      "imagen": "images/uv-defender-loreal-1.webp",
+      "imagenes": [
+        "images/uv-defender-loreal-1.webp",
+        "images/uv-defender-loreal-2.webp"
       ]
     },
     {
-      "id": "isdin-fotoprotector-en-crema-fps-50-tono-arena",
-      "nombre": "ISDIN Fotoprotector en crema FPS 50, tono arena",
-      "categoria": "solares",
-      "precio": 400,
-      "descripcion": "Protector solar en crema apto para retoque.",
-      "imagen": "",
-      "color": "#f2c078",
-      "fuente": "https://www.instagram.com/p/CQ_3ZqmLjKo/",
-      "agotado": true
+      "id": "protector-solar-isdin-fusion-water-pediatrico",
+      "nombre": "Protector Solar ISDIN - Fusion Water Pediátrico",
+      "marca": "ISDIN",
+      "categoria": "bloqueadores",
+      "categorias": [
+        "bloqueadores"
+      ],
+      "precio": 480,
+      "descripcion": "La misma tecnología que los fotoprotectores solares de ISDIN, creada para los más pequeños (y las pieles adultas muy sensibles).",
+      "sku": "MDBLO0013",
+      "imagen": "images/protector-solar-isdin-fusion-water-pediatrico-1.webp",
+      "imagenes": [
+        "images/protector-solar-isdin-fusion-water-pediatrico-1.webp",
+        "images/protector-solar-isdin-fusion-water-pediatrico-2.webp"
+      ]
     },
     {
-      "id": "la-roche-posay-suero-ultra-concentrado",
-      "nombre": "La Roche-Posay suero ultra concentrado",
-      "categoria": "sueros",
-      "precio": 550,
-      "descripcion": "Ayuda a reducir manchas y marcas post acné y a regular la grasa. Es un peeling: solo de noche, cada tercer día, evitando el contorno de ojos.",
-      "imagen": "",
-      "color": "#c9b8e8",
-      "fuente": "https://www.instagram.com/p/C976Bk-PdR-/"
+      "id": "protector-solar-isdin-tonos-medios-y-bronce",
+      "nombre": "Protector Solar ISDIN - Tonos Medios y Bronce",
+      "marca": "ISDIN",
+      "categoria": "bloqueadores",
+      "categorias": [
+        "bloqueadores"
+      ],
+      "precio": 480,
+      "descripcion": "Este protector, además de brindar protección contra los rayos solares, se complementa con ligeros pigmentos de color que ayudan a dar la apariencia de un tono más uniforme a tu piel.",
+      "sku": "MDBLO0012",
+      "imagen": ""
     },
     {
-      "id": "la-roche-posay-niacinamida-pura-10-30-ml",
-      "nombre": "La Roche-Posay Niacinamida pura 10 %, 30 ml",
-      "categoria": "sueros",
-      "precio": 590,
-      "descripcion": "Compatible con todos los tipos de piel, incluso sensibles y grasas. Ayuda con las manchas de sol o acné e hidrata sin ser pegajosa.",
-      "imagen": "",
-      "color": "#c9b8e8",
-      "fuente": "https://www.instagram.com/p/C6cPunuPfuE/"
+      "id": "protector-solar-isdin",
+      "nombre": "Protector Solar ISDIN",
+      "marca": "ISDIN",
+      "categoria": "bloqueadores",
+      "categorias": [
+        "bloqueadores"
+      ],
+      "precio": 480,
+      "descripcion": "¡ISDIN Fusion Water es el protector solar más vendido! Su consistencia ligera lo hace ideal para todo tipo de piel. Tiene absorción inmediata y es compatible con el resto de productos de tu rutina, además contiene ácido hialurónico que le permite retener la hidratación de tu piel.",
+      "sku": "MDBLO0011",
+      "imagen": ""
     },
     {
-      "id": "l-oreal-revitalift-acido-hialuronico-suero-crema",
-      "nombre": "L'Oréal Revitalift Ácido Hialurónico, suero + crema",
-      "categoria": "sueros",
+      "id": "protector-pigment-control-eucerin",
+      "nombre": "Protector pigment control Eucerin",
+      "marca": "",
+      "categoria": "bloqueadores",
+      "categorias": [
+        "bloqueadores"
+      ],
       "precio": 450,
-      "descripcion": "Rutina hidratante para principiantes, para todo tipo de piel.",
-      "imagen": "",
-      "color": "#c9b8e8",
-      "fuente": "https://www.instagram.com/p/C2QGDqevy3-/"
+      "descripcion": "Protector solar facial diario para todo tipo de piel que ayuda a prevenir la hiperpigmentación inducida por el sol. La avanzada tecnología espectral combina filtros uva/uvb de banda ancha y fotosutables para obtener una protección uv muy alta. Y  también incluye ácido glicirretínico, que es compatible con el mecanismo de reparación del ADN de la piel",
+      "sku": "MDBLO0010",
+      "imagen": "images/protector-pigment-control-eucerin-1.webp",
+      "imagenes": [
+        "images/protector-pigment-control-eucerin-1.webp",
+        "images/protector-pigment-control-eucerin-2.webp"
+      ]
     },
     {
-      "id": "vichy-liftactiv-supreme-ha",
-      "nombre": "Vichy Liftactiv Supreme HA",
-      "categoria": "sueros",
-      "precio": 590,
-      "descripcion": "Ácido hialurónico concentrado de bajo y alto peso molecular. Apto para todo tipo de piel, incluso las más sensibles.",
-      "imagen": "",
-      "color": "#c9b8e8",
-      "fuente": "https://www.instagram.com/p/CY4dKGgvWjP/",
-      "agotado": true
+      "id": "protector-solar-nivea-anti-edad",
+      "nombre": "Protector Solar Nivea - Anti Edad",
+      "marca": "Nivea",
+      "categoria": "bloqueadores",
+      "categorias": [
+        "bloqueadores"
+      ],
+      "precio": 220,
+      "descripcion": "Protector solar con activos antiedad, diseñado para pieles maduras o secas. Ofrece protección UVA y UVB y protección solar inmediata (es decir, no tienes que esperar a que se absorba).",
+      "sku": "MDBLO0009",
+      "imagen": "images/protector-solar-nivea-anti-edad-1.webp",
+      "imagenes": [
+        "images/protector-solar-nivea-anti-edad-1.webp",
+        "images/protector-solar-nivea-anti-edad-2.webp"
+      ]
     },
     {
-      "id": "muestra-vichy-liftactiv-h-a-epidermic-filler",
-      "nombre": "Muestra Vichy Liftactiv H.A. Epidermic Filler",
-      "categoria": "sueros",
-      "precio": 65,
-      "descripcion": "Sérum con 1.5 % de ácido hialurónico puro que hidrata, rellena y reafirma. Textura líquida de rápida absorción. 12 piezas por $600.",
-      "imagen": "",
-      "color": "#c9b8e8",
-      "fuente": "https://www.instagram.com/p/COf8Xjwh2UC/",
-      "agotado": true
+      "id": "protector-solar-nivea-anti-brillo",
+      "nombre": "Protector Solar Nivea - Anti Brillo",
+      "marca": "Nivea",
+      "categoria": "bloqueadores",
+      "categorias": [
+        "bloqueadores"
+      ],
+      "precio": 220,
+      "descripcion": "Protector solar FPS 50+, fabricado para pieles normales, grasas y mixtas, pero su consistencia ligera lo hace una buena opción incluso para pieles secas en temporada de primavera-verano. Alta protección, sin sensación pesada o efecto blanco sobre la piel.",
+      "sku": "MDBLO0008",
+      "imagen": "images/protector-solar-nivea-anti-brillo-1.webp",
+      "imagenes": [
+        "images/protector-solar-nivea-anti-brillo-1.webp",
+        "images/protector-solar-nivea-anti-brillo-2.webp"
+      ]
     },
     {
-      "id": "eucerin-cc-cream-fps-15",
-      "nombre": "Eucerin CC Cream FPS 15",
-      "categoria": "cremas",
+      "id": "protector-solar-nivea-piel-sensible",
+      "nombre": "Protector Solar Nivea - Piel Sensible",
+      "marca": "Nivea",
+      "categoria": "bloqueadores",
+      "categorias": [
+        "bloqueadores"
+      ],
+      "precio": 220,
+      "descripcion": "Protector solar de alta protección con textura cremosa y efecto hidratante. Creado para todo tipo de piel, en especial pieles normales y secas. La relación precio-calidad lo hace un gran producto de uso diario en tu rutina.",
+      "sku": "MDBLO0007",
+      "imagen": "images/protector-solar-nivea-piel-sensible-1.webp",
+      "imagenes": [
+        "images/protector-solar-nivea-piel-sensible-1.webp",
+        "images/protector-solar-nivea-piel-sensible-2.webp"
+      ]
+    },
+    {
+      "id": "protector-solar-eucerin-hydrofluid",
+      "nombre": "Protector Solar Eucerin HydroFluid",
+      "marca": "Eucerin",
+      "categoria": "bloqueadores",
+      "categorias": [
+        "bloqueadores"
+      ],
+      "precio": 450,
+      "descripcion": "Protector solar Eucerin FPS 50+, textura ligera ideal para todos los tipos de piel, con protección UVB, UVA y HEVIS, que ayudan a neutralizar el efecto de los radicales libres. Además, contiene glicirretínico que ayuda a reparar la piel luego de una constante exposición solar.",
+      "sku": "MDBLO0006",
+      "imagen": "images/protector-solar-eucerin-hydrofluid-1.webp",
+      "imagenes": [
+        "images/protector-solar-eucerin-hydrofluid-1.webp",
+        "images/protector-solar-eucerin-hydrofluid-2.webp"
+      ]
+    },
+    {
+      "id": "protector-solar-eucerin-oil-control",
+      "nombre": "Protector Solar Eucerin Oil Control",
+      "marca": "Eucerin",
+      "categoria": "bloqueadores",
+      "categorias": [
+        "bloqueadores"
+      ],
+      "precio": 450,
+      "descripcion": "Si ningún protector logra que tu piel se mantenga libre de brillo, esta es tu opción. Este protector está creado especialmente para mantener tu piel libre de brillo por hasta 8 horas. Deja un acabado aterciopelado sobre la piel que le da una apariencia sana y suave.",
+      "sku": "MDBLO0005",
+      "imagen": "images/protector-solar-eucerin-oil-control-1.webp",
+      "imagenes": [
+        "images/protector-solar-eucerin-oil-control-1.webp",
+        "images/protector-solar-eucerin-oil-control-2.webp"
+      ]
+    },
+    {
+      "id": "protector-solar-la-roche-posay-anthelios-con-color",
+      "nombre": "Protector Solar La Roche-Posay Anthelios - Con Color",
+      "marca": "La Roche-Posay",
+      "categoria": "bloqueadores",
+      "categorias": [
+        "bloqueadores"
+      ],
+      "precio": 450,
+      "descripcion": "De las mejores opciones si buscas comenzar a reemplazar tu base de maquillaje o quieres darle una apariencia más uniforme al tono de piel. Bloqueador de textura fluida (casi como agua) creado para pieles sensibles.",
+      "sku": "MDBLO0004",
+      "imagen": "images/protector-solar-la-roche-posay-anthelios-con-color-1.webp",
+      "imagenes": [
+        "images/protector-solar-la-roche-posay-anthelios-con-color-1.webp",
+        "images/protector-solar-la-roche-posay-anthelios-con-color-2.webp"
+      ]
+    },
+    {
+      "id": "protector-solar-la-roche-posay-anthelios-efecto-matte",
+      "nombre": "Protector Solar La Roche-Posay Anthelios - Efecto Matte",
+      "marca": "La Roche-Posay",
+      "categoria": "bloqueadores",
+      "categorias": [
+        "bloqueadores"
+      ],
+      "precio": 450,
+      "descripcion": "Especialmente diseñado para pieles grasas a muy grasas. De textura ligera y rápida absorción, sin apariencia blanca sobre la piel. Además, brinda un efecto matificante que impide una sensación brillosa en el rostro.",
+      "sku": "MDBLO0003",
+      "imagen": "images/protector-solar-la-roche-posay-anthelios-efecto-matte-1.webp"
+    },
+    {
+      "id": "protector-solar-la-roche-posay-anthelios",
+      "nombre": "Protector Solar La Roche-Posay Anthelios",
+      "marca": "La Roche-Posay",
+      "categoria": "bloqueadores",
+      "categorias": [
+        "bloqueadores"
+      ],
+      "precio": 450,
+      "descripcion": "Bloqueador de textura fluida (casi como agua) creado para pieles sensibles. Protector de rápida absorción y efecto hidratante. Muy buena opción si es tu primer bloqueador dermatológico.",
+      "sku": "MDBLO0002",
+      "imagen": "images/protector-solar-la-roche-posay-anthelios-1.webp"
+    },
+    {
+      "id": "protector-solar-bioderma-photoderm-aquafluide",
+      "nombre": "Protector Solar Bioderma Photoderm Aquafluide",
+      "marca": "Bioderma",
+      "categoria": "bloqueadores",
+      "categorias": [
+        "bloqueadores"
+      ],
       "precio": 350,
-      "descripcion": "Unifica el tono con micropigmentos de color, humecta y protege del sol. Con ácido hialurónico de alto y bajo peso molecular.",
-      "imagen": "",
-      "color": "#f3d5c0",
-      "fuente": "https://www.instagram.com/p/COOE3wRhyJz/"
+      "descripcion": "Protector solar con textura en crema muy ligera que ayuda a hidratar y proteger nuestra piel. Está diseñado para todo tipo de piel, incluyendo pieles normales, secas y sensibles. Además, es resistente al sudor, calor y humedad.",
+      "sku": "MDBLO0001",
+      "imagen": "images/protector-solar-bioderma-photoderm-aquafluide-1.webp",
+      "imagenes": [
+        "images/protector-solar-bioderma-photoderm-aquafluide-1.webp",
+        "images/protector-solar-bioderma-photoderm-aquafluide-2.webp"
+      ]
     },
     {
-      "id": "kit-cicatricure",
-      "nombre": "Kit Cicatricure",
-      "categoria": "cremas",
+      "id": "nivea-protector-solar-corporal",
+      "nombre": "Nivea Protector Solar Corporal",
+      "marca": "",
+      "categoria": "bloqueadores",
+      "categorias": [
+        "bloqueadores",
+        "cuerpo"
+      ],
+      "precio": 220,
+      "descripcion": "Protector solar con fórmula hidratante que ayuda a reducir el riesgo de irritación en la piel causada por el sol. No es grasoso ni pegajoso, lo que asegura una aplicación más placentera de rápida absorción resistente al agua y al sudor. También encuentras su presentación apta para pieles sesibles!",
+      "sku": "",
+      "imagen": "images/nivea-protector-solar-corporal-1.webp",
+      "imagenes": [
+        "images/nivea-protector-solar-corporal-1.webp",
+        "images/nivea-protector-solar-corporal-2.webp"
+      ]
+    },
+    {
+      "id": "nivea-protector-solar-en-spray",
+      "nombre": "Nivea Protector solar en spray",
+      "marca": "",
+      "categoria": "bloqueadores",
+      "categorias": [
+        "bloqueadores",
+        "cuerpo"
+      ],
+      "precio": 290,
+      "descripcion": "Protector solar corporal niveabrinda una efectiva protección UVA/UVB con FPS 50, dejando una sensación agradable y refrescante en la piel.  sensación ligera sobre la piel y se absorbe rápidamente; no deja manchas blancas, es resistente al agua y al sudor!",
+      "sku": "",
+      "imagen": "images/nivea-protector-solar-en-spray-1.webp",
+      "imagenes": [
+        "images/nivea-protector-solar-en-spray-1.webp",
+        "images/nivea-protector-solar-en-spray-2.webp",
+        "images/nivea-protector-solar-en-spray-3.webp"
+      ]
+    },
+    {
+      "id": "suero-loreal-revitalift-retinol",
+      "nombre": "Suero Loreal Revitalift - Retinol",
+      "marca": "L'oreal",
+      "categoria": "sueros",
+      "categorias": [
+        "sueros"
+      ],
       "precio": 300,
-      "descripcion": "Crema facial de día hidratante anti-edad, contorno de ojos y base de maquillaje adaptable al tono de piel.",
-      "imagen": "",
-      "color": "#f3d5c0",
-      "fuente": "https://www.instagram.com/p/CO4nYJfBdss/"
+      "descripcion": "",
+      "sku": "MDSUE0012",
+      "imagen": "images/suero-loreal-revitalift-retinol-1.webp",
+      "imagenes": [
+        "images/suero-loreal-revitalift-retinol-1.webp",
+        "images/suero-loreal-revitalift-retinol-2.webp"
+      ]
     },
     {
-      "id": "avene-agua-termal-en-spray",
-      "nombre": "Avène agua termal en spray",
-      "categoria": "cremas",
+      "id": "suero-la-roche-posay-niacinamida-pura-10",
+      "nombre": "Suero La Roche-Posay - Niacinamida Pura 10",
+      "marca": "La Roche-Posay",
+      "categoria": "sueros",
+      "categorias": [
+        "sueros"
+      ],
+      "precio": 590,
+      "descripcion": "",
+      "sku": "MDSUE0011",
+      "imagen": "images/suero-la-roche-posay-niacinamida-pura-10-1.webp",
+      "imagenes": [
+        "images/suero-la-roche-posay-niacinamida-pura-10-1.webp",
+        "images/suero-la-roche-posay-niacinamida-pura-10-2.webp"
+      ]
+    },
+    {
+      "id": "suero-vichy-liftactiv-vitamina-b3",
+      "nombre": "Suero Vichy LiftActiv - Vitamina B3",
+      "marca": "Vichy",
+      "categoria": "sueros",
+      "categorias": [
+        "sueros"
+      ],
+      "precio": 670,
+      "descripcion": "",
+      "sku": "MDSUE0010",
+      "imagen": "images/suero-vichy-liftactiv-vitamina-b3-1.webp",
+      "imagenes": [
+        "images/suero-vichy-liftactiv-vitamina-b3-1.webp",
+        "images/suero-vichy-liftactiv-vitamina-b3-2.webp"
+      ]
+    },
+    {
+      "id": "suero-vichy-liftactiv-retinol",
+      "nombre": "Suero Vichy LiftActiv - Retinol",
+      "marca": "Vichy",
+      "categoria": "sueros",
+      "categorias": [
+        "sueros"
+      ],
+      "precio": 670,
+      "descripcion": "",
+      "sku": "MDSUE0009",
+      "imagen": "images/suero-vichy-liftactiv-retinol-1.webp",
+      "imagenes": [
+        "images/suero-vichy-liftactiv-retinol-1.webp",
+        "images/suero-vichy-liftactiv-retinol-2.webp"
+      ]
+    },
+    {
+      "id": "suero-la-roche-posay-vitamina-c-pura",
+      "nombre": "Suero La Roche-Posay Vitamina C Pura",
+      "marca": "La Roche-Posay",
+      "categoria": "sueros",
+      "categorias": [
+        "sueros"
+      ],
+      "precio": 650,
+      "descripcion": "",
+      "sku": "MDSUE0008",
+      "imagen": "images/suero-la-roche-posay-vitamina-c-pura-1.webp",
+      "imagenes": [
+        "images/suero-la-roche-posay-vitamina-c-pura-1.webp",
+        "images/suero-la-roche-posay-vitamina-c-pura-2.webp"
+      ]
+    },
+    {
+      "id": "suero-vichy-mineral-89",
+      "nombre": "Suero Vichy Mineral 89",
+      "marca": "Vichy",
+      "categoria": "sueros",
+      "categorias": [
+        "sueros"
+      ],
+      "precio": 690,
+      "descripcion": "Mineral 89 fue creado por Vichy para ser considerado como el paso cero de la rutina facial. Su consistencia y alto contenido de agua volcánica mineralizada ayudan a preparar la piel para recibir el resto de los productos, además de que se puede mezclar con prácticamente todos los activos (retinol, vitamina C, niacinamida, etcétera), potenciando sus funciones.",
+      "sku": "MDSUE0007",
+      "imagen": "images/suero-vichy-mineral-89-1.webp",
+      "imagenes": [
+        "images/suero-vichy-mineral-89-1.webp",
+        "images/suero-vichy-mineral-89-2.webp"
+      ]
+    },
+    {
+      "id": "suero-garnier-express-aclara-anti-manchas",
+      "nombre": "Suero Garnier Express Aclara - Anti-manchas",
+      "marca": "Garnier",
+      "categoria": "sueros",
+      "categorias": [
+        "sueros"
+      ],
+      "precio": 220,
+      "descripcion": "Este derivado de la vitamina C es una gran opción si estás comenzando a añadir sueros en tu rutina, pues su concentración lo hace compatible con las pieles sensibles. La vitamina C es un poderoso antioxidante que ayuda a prevenir el envejecimiento prematuro y la pérdida de luminosidad de la piel.",
+      "sku": "MDSUE0006",
+      "imagen": "images/suero-garnier-express-aclara-anti-manchas-1.webp"
+    },
+    {
+      "id": "suero-garnier-express-aclara",
+      "nombre": "Suero Garnier Express Aclara",
+      "marca": "Garnier",
+      "categoria": "sueros",
+      "categorias": [
+        "sueros"
+      ],
+      "precio": 220,
+      "descripcion": "¿Tienes un exceso de puntos negros y marcas causadas por el acné? Este suero es para ti. Su alta concentración de ácido salicílico, niacinamida y derivado de la vitamina C lo hacen el suero perfecto para quienes buscan reducir, eliminar y prevenir la acumulación de grasa en ciertas zonas de la piel, además de reducir las marcas causadas por el acné y recuperar la luminosidad natural de la piel.",
+      "sku": "MDSUE0005",
+      "imagen": "images/suero-garnier-express-aclara-1.webp"
+    },
+    {
+      "id": "suero-nivea-luminous-anti-manchas",
+      "nombre": "Suero Nivea Luminous - Anti-Manchas",
+      "marca": "Nivea",
+      "categoria": "sueros",
+      "categorias": [
+        "sueros"
+      ],
+      "precio": 300,
+      "descripcion": "Si además de eliminar las manchas causadas por el sol y los cambios hormonales quieres una piel libre de brillo, esta es la mejor opción. Sus componentes ayudan a reducir la hiperpigmentación de la piel al mismo tiempo que la matifican y suavizan. ¡Así no necesitarás tantos productos para tu rutina!",
+      "sku": "MDSUE0004",
+      "imagen": "images/suero-nivea-luminous-anti-manchas-1.webp",
+      "imagenes": [
+        "images/suero-nivea-luminous-anti-manchas-1.webp",
+        "images/suero-nivea-luminous-anti-manchas-2.webp"
+      ]
+    },
+    {
+      "id": "suero-nivea-luminous-anti-manchas-anti-edad",
+      "nombre": "Suero Nivea Luminous - Anti-Manchas/Anti Edad",
+      "marca": "Nivea",
+      "categoria": "sueros",
+      "categorias": [
+        "sueros"
+      ],
+      "precio": 300,
+      "descripcion": "La misma tecnología del suero antimanchas de Nivea, ahora dirigida a las pieles maduras. Consistencia ligera que ayuda a prevenir y reducir los signos de la edad, además de unificar el tono de la piel.",
+      "sku": "MDSUE0003",
+      "imagen": "images/suero-nivea-luminous-anti-manchas-anti-edad-1.webp",
+      "imagenes": [
+        "images/suero-nivea-luminous-anti-manchas-anti-edad-1.webp",
+        "images/suero-nivea-luminous-anti-manchas-anti-edad-2.webp"
+      ]
+    },
+    {
+      "id": "suero-nivea-luminous-anti-manchas-anti-imperfecciones",
+      "nombre": "Suero Nivea Luminous - Anti-Manchas/Anti Imperfecciones",
+      "marca": "Nivea",
+      "categoria": "sueros",
+      "categorias": [
+        "sueros"
+      ],
+      "precio": 300,
+      "descripcion": "Suero hidratante antimanchas. Su textura ligera penetra en las capas más profundas de la piel y ayuda a eliminar las manchas causadas por el sol y los cambios hormonales. Sus componentes permiten obtener resultados visibles en cuestión de semanas.",
+      "sku": "MDSUE0002",
+      "imagen": "images/suero-nivea-luminous-anti-manchas-anti-imperfecciones-1.webp",
+      "imagenes": [
+        "images/suero-nivea-luminous-anti-manchas-anti-imperfecciones-1.webp",
+        "images/suero-nivea-luminous-anti-manchas-anti-imperfecciones-2.webp"
+      ]
+    },
+    {
+      "id": "suero-eucerin-hyaluron-filler",
+      "nombre": "Suero Eucerin Hyaluron Filler",
+      "marca": "Eucerin",
+      "categoria": "sueros",
+      "categorias": [
+        "sueros"
+      ],
+      "precio": 320,
+      "descripcion": "Suero hidratante con ácido hialurónico. Textura ligera que permite una rápida absorción, ideal para todo tipo de piel. Además, ayuda a rellenar las líneas de expresión y a dar una apariencia mucho más saludable al rostro.",
+      "sku": "MDSUE0001",
+      "imagen": "images/suero-eucerin-hyaluron-filler-1.webp"
+    },
+    {
+      "id": "vichy-lifactiv-vitamina-c",
+      "nombre": "Vichy Lifactiv Vitamina C",
+      "marca": "",
+      "categoria": "sueros",
+      "categorias": [
+        "sueros"
+      ],
+      "precio": 590,
+      "descripcion": "Suero con 15% de vitamica C pura. Ayuda a regresar la luminosidad natural de nuestra piel y protegernos de la agresividad de los radicales libres (como la contaminación) que son los principales creadores del envejecimiento prematuro",
+      "sku": "",
+      "imagen": "images/vichy-lifactiv-vitamina-c-1.webp",
+      "imagenes": [
+        "images/vichy-lifactiv-vitamina-c-1.webp",
+        "images/vichy-lifactiv-vitamina-c-2.webp"
+      ]
+    },
+    {
+      "id": "neutrogena-hydro-boost",
+      "nombre": "Neutrogena Hydro Boost",
+      "marca": "",
+      "categoria": "sueros",
+      "categorias": [
+        "sueros"
+      ],
+      "precio": 320,
+      "descripcion": "Sérum hidratante concentrado para cara y ojos que combate la  resequedad, hidrata y fortalece la barrera la piel. Formulado con 2 densidades de Ácido Hialurónico, Pro-Vitamina B5 y Glicerina Dermatológicamente probado, no comedogénico, libre de fragancia, parabenos, aceite mineral, silicona y alcohol.",
+      "sku": "",
+      "imagen": "images/neutrogena-hydro-boost-1.webp",
+      "imagenes": [
+        "images/neutrogena-hydro-boost-1.webp",
+        "images/neutrogena-hydro-boost-2.webp",
+        "images/neutrogena-hydro-boost-3.webp"
+      ]
+    },
+    {
+      "id": "revitalift-de-loreal-acido-hialuronico",
+      "nombre": "Revitalift de Loreal. Ácido Hialurónico",
+      "marca": "",
+      "categoria": "sueros",
+      "categorias": [
+        "sueros"
+      ],
+      "precio": 220,
+      "descripcion": "Si estás buscando un hidratante ligero, sin duda este suero es tu mejor opción. Concetrado de ácido hialurónico, el primer paso de tu rutina, ideal para todos los tipos de piel.",
+      "sku": "",
+      "imagen": "images/revitalift-de-loreal-acido-hialuronico-1.webp"
+    },
+    {
+      "id": "anti-pigment-skin-perfecting-serum",
+      "nombre": "Anti-Pigment Skin Perfecting Serum",
+      "marca": "",
+      "categoria": "sueros",
+      "categorias": [
+        "sueros"
+      ],
+      "precio": 590,
+      "descripcion": "sérum ultraligero  que contiene Thiamidol (patente de la marca) para reducir las manchas de pigmentación y evitar su reaparición. Este sérum, ideal para todo tipo de pieles, se absorbe rápidamente y ayuda a la piel a conseguir un aspecto uniforme, liso y con una luminosidad natural",
+      "sku": "",
+      "imagen": "images/anti-pigment-skin-perfecting-serum-1.webp",
+      "imagenes": [
+        "images/anti-pigment-skin-perfecting-serum-1.webp",
+        "images/anti-pigment-skin-perfecting-serum-2.webp"
+      ]
+    },
+    {
+      "id": "isdinceutics-crema-de-dia-a-g-e-reverse",
+      "nombre": "Isdinceutics Crema de día A.G.E. Reverse",
+      "marca": "",
+      "categoria": "cremas-hidratantes-1",
+      "categorias": [
+        "cremas-hidratantes-1"
+      ],
+      "precio": 800,
+      "descripcion": "Tratamiento facial con triple acción antiedad: antipolución, remodelante y antiglicación. Protege tu piel de la polución, remodela el óvalo facial y retrasa el proceso de formación de los productos finales de la glicación avanzada. 30 sobres de 3ml. (90 ml. en total, la crema de tamaño normal contiene 50ml.)",
+      "sku": "MDCRE0007",
+      "imagen": "images/isdinceutics-crema-de-dia-a-g-e-reverse-1.webp",
+      "imagenes": [
+        "images/isdinceutics-crema-de-dia-a-g-e-reverse-1.webp",
+        "images/isdinceutics-crema-de-dia-a-g-e-reverse-2.webp"
+      ]
+    },
+    {
+      "id": "crema-hidratante-eucerin-de-dia-crema-antipigmento",
+      "nombre": "Crema Hidratante Eucerin de Día - Crema Antipigmento",
+      "marca": "Eucerin",
+      "categoria": "cremas-hidratantes-1",
+      "categorias": [
+        "cremas-hidratantes-1"
+      ],
+      "precio": 550,
+      "descripcion": "Crema hidratante dirigida a todo tipo de piel. Pionera en contener Tiamidol, sustancia patentada por Eucerin para eliminar la hiperpigmentación de la piel. Su consistencia es un gran complemento para mantener nuestra piel hidratada y, a la vez, combatir esas manchitas del rostro.",
+      "sku": "MDCRE0006",
+      "imagen": "images/crema-hidratante-eucerin-de-dia-crema-antipigmento-1.webp",
+      "imagenes": [
+        "images/crema-hidratante-eucerin-de-dia-crema-antipigmento-1.webp",
+        "images/crema-hidratante-eucerin-de-dia-crema-antipigmento-2.webp"
+      ]
+    },
+    {
+      "id": "crema-hidratante-garnier-gel-crema",
+      "nombre": "Crema Hidratante Garnier (Gel-Crema)",
+      "marca": "Garnier",
+      "categoria": "cremas-hidratantes-1",
+      "categorias": [
+        "cremas-hidratantes-1"
+      ],
       "precio": 190,
-      "descripcion": "Indicada para pieles sensibles, hipersensibles, alérgicas o irritadas.",
-      "imagen": "",
-      "color": "#f3d5c0",
-      "fuente": "https://www.instagram.com/p/CO58GKeB1EP/",
-      "agotado": true
+      "descripcion": "Gel hidratante dirigido a pieles mixtas y grasas. Con activos antimanchas y antiimperfecciones que brindan una apariencia más saludable a nuestra piel. La relación entre costo y calidad lo convierte en una de las mejores opciones para las pieles que buscan atacar problemas específicos.",
+      "sku": "MDCRE0005",
+      "imagen": "images/crema-hidratante-garnier-gel-crema-1.webp"
     },
     {
-      "id": "eclipsol-fps-50",
-      "nombre": "Eclipsol FPS 50",
+      "id": "crema-hidratante-neutrogena-gel-crema",
+      "nombre": "Crema Hidratante Neutrogena (Gel-Crema)",
+      "marca": "Neutrogena",
+      "categoria": "cremas-hidratantes-1",
+      "categorias": [
+        "cremas-hidratantes-1"
+      ],
+      "precio": 300,
+      "descripcion": "Gel hidratante ideal para todo tipo de piel. Efecto hidratante sin consistencia grasosa. Con un aroma muy particular que hace de su uso toda una experiencia.",
+      "sku": "MDCRE0004",
+      "imagen": "images/crema-hidratante-neutrogena-gel-crema-1.webp",
+      "imagenes": [
+        "images/crema-hidratante-neutrogena-gel-crema-1.webp",
+        "images/crema-hidratante-neutrogena-gel-crema-2.webp"
+      ]
+    },
+    {
+      "id": "crema-hidratante-loreal-revitalift-crema",
+      "nombre": "Crema Hidratante Loreal Revitalift (Crema)",
+      "marca": "L'oreal",
+      "categoria": "cremas-hidratantes-1",
+      "categorias": [
+        "cremas-hidratantes-1"
+      ],
+      "precio": 220,
+      "descripcion": "Crema hidratante dirigida a pieles maduras. Gracias a sus activos antiedad, ayuda a regenerar e hidratar la piel del rostro. Recomendada para pieles secas a muy secas o para aquellas temporadas de invierno.",
+      "sku": "MDCRE0003",
+      "imagen": "images/crema-hidratante-loreal-revitalift-crema-1.webp",
+      "imagenes": [
+        "images/crema-hidratante-loreal-revitalift-crema-1.webp",
+        "images/crema-hidratante-loreal-revitalift-crema-2.webp"
+      ]
+    },
+    {
+      "id": "crema-hidratante-loreal-revitalift-acido-hialuronico-gel-cre",
+      "nombre": "Crema Hidratante Loreal Revitalift - Ácido Hialurónico (Gel-Crema)",
+      "marca": "L'oreal",
+      "categoria": "cremas-hidratantes-1",
+      "categorias": [
+        "cremas-hidratantes-1"
+      ],
+      "precio": 220,
+      "descripcion": "Hidratante de textura en gel, ideal para pieles mixtas a grasas. Efecto matificante que ayuda a prevenir y eliminar la aparición de puntos negros y acné gracias a su contenido de ácido salicílico. Además, ofrece una alta sensación de frescura y rápida absorción, lo que la convierte en la mejor aliada en nuestra rutina en temporadas de calor.",
+      "sku": "MDCRE0002",
+      "imagen": "images/crema-hidratante-loreal-revitalift-acido-hialuronico-gel-cre-1.webp",
+      "imagenes": [
+        "images/crema-hidratante-loreal-revitalift-acido-hialuronico-gel-cre-1.webp",
+        "images/crema-hidratante-loreal-revitalift-acido-hialuronico-gel-cre-2.webp"
+      ]
+    },
+    {
+      "id": "crema-hidratante-loreal-revitalift-acido-hialuronico-crema",
+      "nombre": "Crema Hidratante Loreal Revitalift - Ácido Hialurónico (Crema)",
+      "marca": "L'oreal",
+      "categoria": "cremas-hidratantes-1",
+      "categorias": [
+        "cremas-hidratantes-1"
+      ],
+      "precio": 220,
+      "descripcion": "Crema hidratante para todo tipo de piel, especialmente pieles normales a secas. Ayuda a prevenir y eliminar líneas de expresión prematuras y es una gran opción si estás comenzando en el mundo del cuidado de la piel.",
+      "sku": "MDCRE0001",
+      "imagen": "images/crema-hidratante-loreal-revitalift-acido-hialuronico-crema-1.webp",
+      "imagenes": [
+        "images/crema-hidratante-loreal-revitalift-acido-hialuronico-crema-1.webp",
+        "images/crema-hidratante-loreal-revitalift-acido-hialuronico-crema-2.webp"
+      ]
+    },
+    {
+      "id": "contorno-de-ojos-revitalift-acido-hialuronico-cafeina",
+      "nombre": "Contorno de Ojos Revitalift - Ácido Hialurónico + Cafeína",
+      "marca": "L'oreal",
+      "categoria": "contorno-de-ojos-1",
+      "categorias": [
+        "contorno-de-ojos-1"
+      ],
+      "precio": 290,
+      "descripcion": "Suero hidratante para la zona de los ojos. Textura súper ligera y de rápida absorción; además, contiene cafeína que ayuda a eliminar la hiperpigmentación acumulada en nuestras ojeras.",
+      "sku": "MDCON0002",
+      "imagen": "images/contorno-de-ojos-revitalift-acido-hialuronico-cafeina-1.webp",
+      "imagenes": [
+        "images/contorno-de-ojos-revitalift-acido-hialuronico-cafeina-1.webp",
+        "images/contorno-de-ojos-revitalift-acido-hialuronico-cafeina-2.webp"
+      ]
+    },
+    {
+      "id": "contorno-de-ojos-revitalift-acido-hialuronico",
+      "nombre": "Contorno de Ojos Revitalift - Ácido Hialurónico",
+      "marca": "L'oreal",
+      "categoria": "contorno-de-ojos-1",
+      "categorias": [
+        "contorno-de-ojos-1"
+      ],
+      "precio": 220,
+      "descripcion": "Contorno de ojos rellenador. Crema ligera que promete una hidratación de hasta 24 hrs. Recuerda que una forma de prevenir la pigmentación en la zona de los ojos es a través de la hidratación y esta es de las mejores opciones gracias a su alta concentración de ácido hialurónico.",
+      "sku": "MDCON0001",
+      "imagen": ""
+    },
+    {
+      "id": "neutrogena-contorno-de-ojos",
+      "nombre": "Neutrogena Contorno de ojos",
+      "marca": "",
+      "categoria": "contorno-de-ojos-1",
+      "categorias": [
+        "contorno-de-ojos-1"
+      ],
+      "precio": 260,
+      "descripcion": "Hidratante en gel que hidrata intensamente por 48 hrs, revitaliza el contorno de ojos y fortalece la barrera de la piel. Mantiene la delicada zona de las ojeras, suave tersa e hidratada sin dejar sensación grasosa. Contine con ácido Hialurónico + derivado de oliva ojo: Dermatológicamente y oftalmológicamente probado",
+      "sku": "",
+      "imagen": "images/neutrogena-contorno-de-ojos-1.webp",
+      "imagenes": [
+        "images/neutrogena-contorno-de-ojos-1.webp",
+        "images/neutrogena-contorno-de-ojos-2.webp"
+      ]
+    },
+    {
+      "id": "loreal-contorno-de-ojos",
+      "nombre": "Loreal Contorno de ojos",
+      "marca": "",
+      "categoria": "contorno-de-ojos-1",
+      "categorias": [
+        "contorno-de-ojos-1"
+      ],
+      "precio": 270,
+      "descripcion": "Contonor de ojos formulado con la mayor concentración de AH (1,5% de Ácido Hialurónico) de L'Oréal Paris para hidratar la piel en profundidad y rellenar las líneas del contorno de ojos. apato para todos los tipo de piel. Ademas tiene un aplicador  que permite una aplicación más cómoda!",
+      "sku": "",
+      "imagen": "images/loreal-contorno-de-ojos-1.webp",
+      "imagenes": [
+        "images/loreal-contorno-de-ojos-1.webp",
+        "images/loreal-contorno-de-ojos-2.webp"
+      ]
+    },
+    {
+      "id": "hidratante-de-labios-aquaphor-reparacion-de-labios",
+      "nombre": "Hidratante de Labios Aquaphor - Reparación de Labios",
+      "marca": "Eucerin",
+      "categoria": "hidratantes-de-labios",
+      "categorias": [
+        "hidratantes-de-labios"
+      ],
+      "precio": 120,
+      "descripcion": "Hidratante de labios con textura súper cremosa, ideal para labios agrietados. Usa el codigo EMEYDE2POR1 en tu carrito para habilitar el 2x1 de este producto",
+      "sku": "MDHID0001",
+      "imagen": "images/hidratante-de-labios-aquaphor-reparacion-de-labios-1.webp",
+      "promo": "2x1"
+    },
+    {
+      "id": "hidratante-de-labios-nivea-hidratante-labial",
+      "nombre": "Hidratante de Labios Nivea - Hidratante Labial",
+      "marca": "Nivea",
+      "categoria": "hidratantes-de-labios",
+      "categorias": [
+        "hidratantes-de-labios"
+      ],
+      "precio": 100,
+      "descripcion": "Hidratante labial de textura ligera para uso diario El precio es por pieza Usa el codigo EMEYDE2POR1 en tu carrito para habilitar el 2x1 de este producto",
+      "sku": "MDHID0002",
+      "imagen": "images/hidratante-de-labios-nivea-hidratante-labial-1.webp",
+      "promo": "2x1"
+    },
+    {
+      "id": "hidratante-de-labios-eos-hidratante-labial",
+      "nombre": "Hidratante de Labios Eos - Hidratante Labial",
+      "marca": "Eos",
+      "categoria": "hidratantes-de-labios",
+      "categorias": [
+        "hidratantes-de-labios"
+      ],
+      "precio": 100,
+      "descripcion": "Paquete de hidrante eos, tuxtura cremosa de uso diario formulado con distintos aromas frutales.",
+      "sku": "MDHID0003",
+      "imagen": "images/hidratante-de-labios-eos-hidratante-labial-1.webp",
+      "imagenes": [
+        "images/hidratante-de-labios-eos-hidratante-labial-1.webp",
+        "images/hidratante-de-labios-eos-hidratante-labial-2.webp"
+      ]
+    },
+    {
+      "id": "locion-ph5-eucerin",
+      "nombre": "Locion Ph5 Eucerin",
+      "marca": "",
       "categoria": "cuerpo",
-      "precio": null,
-      "descripcion": "Nuestro favorito para el cuerpo. Resistente al agua, sin perfume.",
-      "imagen": "",
-      "color": "#bcd4d6",
-      "fuente": "https://www.instagram.com/p/CM0t8k6BbQ0/"
+      "categorias": [
+        "cuerpo"
+      ],
+      "precio": 650,
+      "descripcion": "Una Loción hidratante corporal ligera (1L) para piel sensible / seca. Enriquecida con un 5% de Dexpantenol, su fórmula  hidrata la piel de forma natural ¡También portege la barrera natuaral de nuestra piel!",
+      "sku": "",
+      "imagen": "images/locion-ph5-eucerin-1.webp",
+      "imagenes": [
+        "images/locion-ph5-eucerin-1.webp",
+        "images/locion-ph5-eucerin-2.webp"
+      ]
     },
     {
-      "id": "eucerin-ph5-skin-protection-gel-de-bano-400-ml",
-      "nombre": "Eucerin pH5 Skin Protection gel de baño, 400 ml",
+      "id": "crema-solida-ph5-eucerin",
+      "nombre": "Crema solida Ph5 Eucerin",
+      "marca": "",
       "categoria": "cuerpo",
-      "precio": null,
-      "descripcion": "Jabón sin alcalinos para el cuidado diario. Limpia e hidrata; apto para pieles sensibles de adultos y bebés.",
-      "imagen": "",
-      "color": "#bcd4d6",
-      "fuente": "https://www.instagram.com/p/CMwBe2pBxPV/"
+      "categorias": [
+        "cuerpo"
+      ],
+      "precio": 390,
+      "descripcion": "Eucerin pH5, Crema intensiva corporal para piel seca y sensible con pH Balance System que ayuda a proteger la barrera natural de la Piel.",
+      "sku": "",
+      "imagen": "images/crema-solida-ph5-eucerin-1.webp",
+      "imagenes": [
+        "images/crema-solida-ph5-eucerin-1.webp",
+        "images/crema-solida-ph5-eucerin-2.webp",
+        "images/crema-solida-ph5-eucerin-3.webp"
+      ]
     },
     {
-      "id": "eucerin-crema-para-piel-seca-a-extra-seca-198-g",
-      "nombre": "Eucerin crema para piel seca a extra seca, 198 g",
-      "categoria": "cuerpo",
-      "precio": 190,
-      "descripcion": "Ideal para las partes con mayor resequedad como codos, manos y pies. Producto dermatológico, sin parabenos.",
-      "imagen": "",
-      "color": "#bcd4d6",
-      "fuente": "https://www.instagram.com/p/CLxTmyQhN09/"
-    },
-    {
-      "id": "gd3-tratamiento-con-aceite-de-argan-240-ml",
-      "nombre": "GD3 tratamiento con aceite de argán, 240 ml",
+      "id": "mawi-shampoo",
+      "nombre": "Mawi Shampoo",
+      "marca": "",
       "categoria": "cabello",
-      "precio": 350,
-      "descripcion": "El aceite de argán de siempre en su nueva presentación GD3.",
-      "imagen": "",
-      "color": "#d9a441",
-      "fuente": "https://www.instagram.com/p/DL-wCbhvpWX/"
+      "categorias": [
+        "cabello"
+      ],
+      "precio": 160,
+      "descripcion": "Formula vegana creada con ingredintes naturales que aportan brillo y suviadad a nuestro cabello. Además Mawi cuenta con diversas opciones para las distintas necidades del cuero cabelludo!",
+      "sku": "MDCAB0005",
+      "imagen": "images/mawi-shampoo-1.webp",
+      "imagenes": [
+        "images/mawi-shampoo-1.webp",
+        "images/mawi-shampoo-2.webp"
+      ]
     },
     {
-      "id": "maybelline-superstay-vinyl-ink",
-      "nombre": "Maybelline SuperStay Vinyl Ink",
+      "id": "aceite-loreal-oleo-extraordinario",
+      "nombre": "Aceite Loreal Oleo extraordinario",
+      "marca": "",
+      "categoria": "cabello",
+      "categorias": [
+        "cabello"
+      ],
+      "precio": 160,
+      "descripcion": "fórmula rica, no grasa y ligera, que se adapta a todos los tipos de cabellos y les aporta nutrición, brillo, suavidad y vitalidad sin apelmazar!",
+      "sku": "MDCAB0004",
+      "imagen": "images/aceite-loreal-oleo-extraordinario-1.webp",
+      "imagenes": [
+        "images/aceite-loreal-oleo-extraordinario-1.webp",
+        "images/aceite-loreal-oleo-extraordinario-2.webp"
+      ]
+    },
+    {
+      "id": "ogx-shampoo-y-acondicionador",
+      "nombre": "OGX shampoo y acondicionador",
+      "marca": "",
+      "categoria": "cabello",
+      "categorias": [
+        "cabello"
+      ],
+      "precio": 150,
+      "descripcion": "Shampoo y/o acondicionador OGX formulados sin sulfatos y parabenos que permiten una limpieza suave y getil para el cuero cabelludo.  Y además de dar brillo y suvidad, tienen un aroma súuuuper rico!",
+      "sku": "MDCAB0003",
+      "imagen": "images/ogx-shampoo-y-acondicionador-1.webp",
+      "imagenes": [
+        "images/ogx-shampoo-y-acondicionador-1.webp",
+        "images/ogx-shampoo-y-acondicionador-2.webp"
+      ]
+    },
+    {
+      "id": "ogx-aceite-de-coco",
+      "nombre": "OGX Aceite de coco",
+      "marca": "",
+      "categoria": "cabello",
+      "categorias": [
+        "cabello"
+      ],
+      "precio": 150,
+      "descripcion": "Ayuda a renovar y suavizar el cabello, mientras retiene la hidratación para mejorar la fuerza y elasticidad del mismo. Además, protege el cabello del calor y de los rayos UV! Formulado con aceite de coco",
+      "sku": "MDCAB0002",
+      "imagen": "images/ogx-aceite-de-coco-1.webp",
+      "imagenes": [
+        "images/ogx-aceite-de-coco-1.webp",
+        "images/ogx-aceite-de-coco-2.webp"
+      ]
+    },
+    {
+      "id": "ogx-aceite-de-argan",
+      "nombre": "OGX Aceite de argán",
+      "marca": "",
+      "categoria": "cabello",
+      "categorias": [
+        "cabello"
+      ],
+      "precio": 150,
+      "descripcion": "Repara las puntas abiertas y elimina el frizz con el tratamiento capilar de Aceite de Argan. Sin parabenos y con tensioactivos sin sulfatos. Formulado con una mezcla hidratante de rica aceite de argán marroquí prensado en frío, que ayuda a dejar el cabello con una sensación tersa, suave y brillante.",
+      "sku": "MDCAB0001",
+      "imagen": "images/ogx-aceite-de-argan-1.webp",
+      "imagenes": [
+        "images/ogx-aceite-de-argan-1.webp",
+        "images/ogx-aceite-de-argan-2.webp"
+      ]
+    },
+    {
+      "id": "instant-age-rewind",
+      "nombre": "Instant Age Rewind",
+      "marca": "",
       "categoria": "maquillaje",
+      "categorias": [
+        "maquillaje"
+      ],
+      "precio": 160,
+      "descripcion": "Corrector que hidrata hasta 12hs el contorno de ojos, trata y reafirma ojeras y bolsas. Su aplicador en esponja cubre fácilmente con precisión y consigue una cobertura que no reseca ni cuartea. ¡Lo puedes usar como corrector, base, contour o iluminador!",
+      "sku": "MDMAQ0007",
+      "imagen": "images/instant-age-rewind-1.webp",
+      "imagenes": [
+        "images/instant-age-rewind-1.webp",
+        "images/instant-age-rewind-2.webp",
+        "images/instant-age-rewind-3.webp"
+      ]
+    },
+    {
+      "id": "rimeles",
+      "nombre": "Rimeles",
+      "marca": "",
+      "categoria": "maquillaje",
+      "categorias": [
+        "maquillaje"
+      ],
       "precio": 180,
-      "descripcion": "Labial con acabado súper brilloso y duración de hasta 24 horas. Pregunta por los tonos disponibles.",
-      "imagen": "",
-      "color": "#c98a8f",
-      "fuente": "https://www.instagram.com/p/C0r6lFVPmSl/"
+      "descripcion": "Rimeles base agua y aceite, para dar volumen y definición a nuestras pestañas",
+      "sku": "MDMAQ0006",
+      "imagen": "images/rimeles-1.webp",
+      "imagenes": [
+        "images/rimeles-1.webp",
+        "images/rimeles-2.webp",
+        "images/rimeles-3.webp",
+        "images/rimeles-4.webp"
+      ]
     },
     {
-      "id": "maybelline-sky-high-rimel-a-prueba-de-agua",
-      "nombre": "Maybelline Sky High rímel a prueba de agua",
+      "id": "fit-me-base-de-maquillaje",
+      "nombre": "Fit Me! Base de maquillaje",
+      "marca": "",
       "categoria": "maquillaje",
-      "precio": 210,
-      "descripcion": "El rímel que estuvo por todo internet.",
-      "imagen": "",
-      "color": "#c98a8f",
-      "fuente": "https://www.instagram.com/p/CRkRyxCBiB9/"
-    },
-    {
-      "id": "l-oreal-infaillible-24h-fresh-wear",
-      "nombre": "L'Oréal Infaillible 24H Fresh Wear",
-      "categoria": "maquillaje",
+      "categorias": [
+        "maquillaje"
+      ],
       "precio": 200,
-      "descripcion": "Base de larga duración y acabado natural. Alta cobertura, resiste el agua y no se transfiere. Pregunta por tu tono.",
-      "imagen": "",
-      "color": "#c98a8f",
-      "fuente": "https://www.instagram.com/p/COVnwszhm5u/"
+      "descripcion": "e base de maquillaje Fit Me Matte + Poreless. Esta base de maquillaje ligera matifica y afina los poros para un acabado natural e impecable. Ideal para pieles mixtas y grasas",
+      "sku": "MDMAQ0005",
+      "imagen": "images/fit-me-base-de-maquillaje-1.webp",
+      "imagenes": [
+        "images/fit-me-base-de-maquillaje-1.webp",
+        "images/fit-me-base-de-maquillaje-2.webp",
+        "images/fit-me-base-de-maquillaje-3.webp"
+      ]
     },
     {
-      "id": "iluminadores-milani",
-      "nombre": "Iluminadores Milani",
+      "id": "base-super-stay",
+      "nombre": "Base Super Stay",
+      "marca": "",
       "categoria": "maquillaje",
+      "categorias": [
+        "maquillaje"
+      ],
       "precio": 200,
-      "descripcion": "",
-      "imagen": "",
-      "color": "#c98a8f",
-      "fuente": "https://www.instagram.com/p/CP_1m-ahhB2/"
+      "descripcion": "base de maquillaje de cobertura total Super Stay de Maybelline ofrece una cobertura concentrada durante 24 horas con acabado mate que no se desvanece durante todo el día.",
+      "sku": "MDMAQ0004",
+      "imagen": "images/base-super-stay-1.webp",
+      "imagenes": [
+        "images/base-super-stay-1.webp",
+        "images/base-super-stay-2.webp"
+      ]
     },
     {
-      "id": "rimel-l-oreal",
-      "nombre": "Rímel L'Oréal",
+      "id": "labial-vinylink",
+      "nombre": "Labial VinylINK",
+      "marca": "",
       "categoria": "maquillaje",
-      "precio": 180,
-      "descripcion": "",
-      "imagen": "",
-      "color": "#c98a8f",
-      "fuente": "https://www.instagram.com/p/CJo3BLzhi15/"
+      "categorias": [
+        "maquillaje"
+      ],
+      "precio": 200,
+      "descripcion": "Super Stay Vinyl Ink , para un color vinilo resistente al difuminado y con hasta 16 horas de duración. ojo: agítalo antes de usarlo y aplícatelo sobre los labios limpios y secos.",
+      "sku": "MDMAQ0003",
+      "imagen": "images/labial-vinylink-1.webp",
+      "imagenes": [
+        "images/labial-vinylink-1.webp",
+        "images/labial-vinylink-2.webp"
+      ]
     },
     {
-      "id": "mascaras-de-pestanas-maybelline-varios-modelos",
-      "nombre": "Máscaras de pestañas Maybelline, varios modelos",
+      "id": "labial-superstay",
+      "nombre": "Labial SuperStay",
+      "marca": "",
       "categoria": "maquillaje",
-      "precio": 165,
-      "descripcion": "Pregunta por los modelos disponibles.",
-      "imagen": "",
-      "color": "#c98a8f",
-      "fuente": "https://www.instagram.com/p/CD4GsMaB_Lt/"
+      "categorias": [
+        "maquillaje"
+      ],
+      "precio": 170,
+      "descripcion": "¡El labial más vendido de la marca! Labial líquido estilo tinta SuperStay Matte Ink Liquid Lipstick te brinda un acabado mate impecable con duración de hasta 24hrs.",
+      "sku": "MDMAQ0002",
+      "imagen": "images/labial-superstay-1.webp",
+      "imagenes": [
+        "images/labial-superstay-1.webp",
+        "images/labial-superstay-2.webp",
+        "images/labial-superstay-3.webp"
+      ]
+    },
+    {
+      "id": "revlon-colorstay",
+      "nombre": "Revlon ColorStay",
+      "marca": "",
+      "categoria": "maquillaje",
+      "categorias": [
+        "maquillaje"
+      ],
+      "precio": 200,
+      "descripcion": "Esta base de maquillaje transpirable, construible y sin aceites ofrece una duración impecable de 24 horas. Resistente al calor y la humedad.  Incluye Vitamina E antioxidante para ayudar a nutrir y proteger la piel de los contaminantes. ¡Resistente a la transferencia y al agua!",
+      "sku": "MDMAQ0001",
+      "imagen": "images/revlon-colorstay-1.webp",
+      "imagenes": [
+        "images/revlon-colorstay-1.webp",
+        "images/revlon-colorstay-2.webp"
+      ]
     }
   ]
 }

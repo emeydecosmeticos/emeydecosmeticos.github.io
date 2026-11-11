@@ -60,6 +60,7 @@
       if (store.nombre) document.querySelector('.brand').textContent = store.nombre;
       $('notice').hidden = !store.ejemplo;
       readCart();
+      readCoupon();
       readUrl();
       renderChips();
       renderGrid();
@@ -103,12 +104,14 @@
 
   const norm = (s) => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 
+  const catsOf = (p) => (p.categorias && p.categorias.length ? p.categorias : [p.categoria]);
+
   function visibleProducts() {
     const q = norm(filter.q.trim());
     return products.filter((p) => {
-      if (filter.cat !== 'todo' && p.categoria !== filter.cat) return false;
+      if (filter.cat !== 'todo' && !catsOf(p).includes(filter.cat)) return false;
       if (!q) return true;
-      const hay = norm([p.nombre, p.descripcion, (categories.find((c) => c.id === p.categoria) || {}).nombre || '', ...(p.tonos || []).map((t) => t.nombre)].join(' '));
+      const hay = norm([p.nombre, p.marca || '', p.descripcion, (categories.find((c) => c.id === p.categoria) || {}).nombre || '', ...(p.tonos || []).map((t) => t.nombre)].join(' '));
       return hay.includes(q);
     });
   }
@@ -151,6 +154,44 @@
     return box;
   }
 
+  // varias fotos: una tira que se desliza con el dedo
+  function galleryFor(p) {
+    const strip = el('div', 'gallery');
+    strip.setAttribute('aria-label', 'Fotos de ' + p.nombre);
+    p.imagenes.forEach((src, i) => {
+      const item = mediaFor(Object.assign({}, p, { imagen: src }), null, 'gallery__item');
+      const img = item.querySelector('img');
+      if (img) { img.alt = p.nombre + ', foto ' + (i + 1); if (i === 0) img.loading = 'eager'; }
+      strip.append(item);
+    });
+    return strip;
+  }
+
+  // ---------- promociones ----------
+  // "2x1", "3x2": lleva N y paga M del mismo producto. Con "promo_hasta": "2026-12-31" deja de aplicar después de esa fecha.
+  const today = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+  function promoOf(p) {
+    const m = /^(\d+)x(\d+)$/.exec(p.promo || '');
+    if (!m) return null;
+    const n = Number(m[1]), pay = Number(m[2]);
+    if (!(n > pay && pay > 0)) return null;
+    if (p.promo_hasta && String(p.promo_hasta) < today()) return null;
+    return { n, pay, label: p.promo };
+  }
+  function promoDiscounts() {
+    const qty = {};
+    cart.forEach((l) => { qty[l.id] = (qty[l.id] || 0) + l.cantidad; });
+    const parts = [];
+    Object.keys(qty).forEach((id) => {
+      const p = products.find((x) => x.id === id);
+      const promo = p && promoOf(p);
+      if (!promo || p.precio == null) return;
+      const free = Math.floor(qty[id] / promo.n) * (promo.n - promo.pay);
+      if (free > 0) parts.push({ label: 'Promo ' + promo.label + ' ' + p.nombre, amount: free * p.precio });
+    });
+    return parts;
+  }
+
   // ---------- cuadrícula ----------
   function renderGrid() {
     const grid = $('grid');
@@ -176,6 +217,7 @@
       if (n > 1) meta.append(el('span', 'card__tones', n + ' tonos'));
       card.append(meta);
       if (p.agotado) card.append(el('span', 'badge', 'Agotado'));
+      else if (promoOf(p)) card.append(el('span', 'badge badge--promo', promoOf(p).label));
       card.addEventListener('click', () => openProduct(p));
       return card;
     };
@@ -232,7 +274,11 @@
 
   function renderProductSheet() {
     const p = current;
-    $('ps-media').replaceWith(Object.assign(mediaFor(p, currentTone, 'sheet__media'), { id: 'ps-media' }));
+    const many = p.imagenes && p.imagenes.length > 1 && !(currentTone && currentTone.imagen);
+    $('ps-media').replaceWith(Object.assign(many ? galleryFor(p) : mediaFor(p, currentTone, 'sheet__media'), { id: 'ps-media' }));
+    const promo = promoOf(p);
+    $('ps-promo').hidden = !promo || !!p.agotado;
+    if (promo) $('ps-promo').textContent = 'Promoción ' + promo.label + ': lleva ' + promo.n + ' y paga ' + promo.pay + '.';
     const tones = p.tonos || [];
     $('ps-tones-wrap').hidden = tones.length < 2;
     $('ps-tone-name').textContent = currentTone ? currentTone.nombre : '';
@@ -276,11 +322,63 @@
   const productOf = (line) => products.find((p) => p.id === line.id);
   const toneOf = (line) => (productOf(line).tonos || []).find((t) => t.nombre === line.tono) || null;
   const cartTotal = () => cart.reduce((s, l) => s + (productOf(l).precio || 0) * l.cantidad, 0);
+  const round2 = (n) => Math.round(n * 100) / 100;
+
+  // subtotal -> promociones -> cupón -> total
+  function totals() {
+    const sub = cartTotal();
+    const promos = promoDiscounts();
+    const afterPromos = sub - promos.reduce((s, x) => s + x.amount, 0);
+    let couponAmount = 0, couponNote = '';
+    if (coupon) {
+      if (afterPromos < (coupon.minimo || 0)) couponNote = 'El cupón ' + coupon.codigo + ' pide una compra mínima de ' + money(coupon.minimo) + '.';
+      else couponAmount = coupon.tipo === 'monto' ? Math.min(coupon.valor, afterPromos) : round2(afterPromos * coupon.valor / 100);
+    }
+    return { sub, promos, couponAmount, couponNote, total: round2(afterPromos - couponAmount) };
+  }
   const totalText = () => {
     const pending = cart.some((l) => productOf(l).precio == null);
-    if (pending && cartTotal() === 0) return 'Por confirmar';
-    return money(cartTotal()) + (pending ? ' + por confirmar' : '');
+    const total = totals().total;
+    if (pending && total === 0) return 'Por confirmar';
+    return money(total) + (pending ? ' + por confirmar' : '');
   };
+
+  // ---------- cupón ----------
+  const COUPON_KEY = 'emeyde.cupon.v1';
+  let coupon = null;        // { codigo, tipo: 'porcentaje' | 'monto', valor, minimo }
+  function readCoupon() {
+    try {
+      const c = JSON.parse(localStorage.getItem(COUPON_KEY) || 'null');
+      if (c && c.codigo && Number(c.valor) > 0) coupon = c;
+    } catch (e) { coupon = null; }
+  }
+  function saveCoupon() {
+    try { if (coupon) localStorage.setItem(COUPON_KEY, JSON.stringify(coupon)); else localStorage.removeItem(COUPON_KEY); } catch (e) { /* sin almacenamiento */ }
+  }
+  const couponLabel = (c) => 'Cupón ' + c.codigo + (c.tipo === 'monto' ? '' : ' (' + c.valor + '%)');
+
+  // El código se valida en el Worker; la lista de cupones nunca llega al navegador.
+  async function applyCoupon() {
+    const input = $('cs-coupon'), msg = $('cs-coupon-msg'), btn = $('cs-coupon-apply');
+    if (coupon) { coupon = null; saveCoupon(); input.value = ''; msg.textContent = ''; renderCartBadge(); renderCart(); return; }
+    const code = input.value.trim().toUpperCase();
+    if (!code) { msg.textContent = 'Escribe tu código.'; return; }
+    btn.disabled = true; msg.textContent = 'Revisando…';
+    try {
+      if (!API_URL) throw new Error('sin servicio');
+      const res = await fetchJson(API_URL + 'cupon?codigo=' + encodeURIComponent(code), 6000);
+      if (res && res.ok === true && Number(res.valor) > 0) {
+        coupon = { codigo: String(res.codigo), tipo: res.tipo === 'monto' ? 'monto' : 'porcentaje', valor: Number(res.valor), minimo: Number(res.minimo) || 0 };
+        saveCoupon(); msg.textContent = '';
+      } else if (res && res.ok === false) {
+        msg.textContent = res.motivo === 'vencido' ? 'Ese cupón ya venció.' : 'Ese cupón no es válido.';
+      } else throw new Error('respuesta inesperada');
+    } catch (e) {
+      msg.textContent = 'No se pudo revisar el cupón. Inténtalo de nuevo.';
+    }
+    btn.disabled = false;
+    renderCartBadge(); renderCart();
+  }
   const cartUnits = () => cart.reduce((s, l) => s + l.cantidad, 0);
 
   function addToCart(p, tone, qty) {
@@ -315,6 +413,12 @@
       const chip = el('div', 'line__chip');
       const color = (tone && tone.color) || p.color;
       if (color) chip.style.setProperty('--swatch', color);
+      if (p.imagen) {
+        const thumb = new Image();
+        thumb.alt = ''; thumb.loading = 'lazy'; thumb.src = p.imagen;
+        thumb.addEventListener('error', () => thumb.remove());
+        chip.append(thumb);
+      }
       const text = el('div');
       text.append(el('div', 'line__name', p.nombre));
       if (line.tono) text.append(el('div', 'line__tone', 'Tono ' + line.tono));
@@ -335,6 +439,18 @@
       li.append(chip, text, price, stepper, remove);
       return li;
     }));
+    $('cs-coupon-wrap').hidden = empty;
+    const t = totals();
+    const rows = [];
+    const row = (label, value) => { const d = el('div', 'sum__row'); d.append(el('span', null, label), el('span', 'fig', value)); return d; };
+    if (t.promos.length || t.couponAmount) rows.push(row('Subtotal', money(t.sub)));
+    t.promos.forEach((x) => rows.push(row(x.label, '−' + money(x.amount))));
+    if (t.couponAmount) rows.push(row(couponLabel(coupon), '−' + money(t.couponAmount)));
+    $('cs-sum').replaceChildren(...rows);
+    $('cs-coupon').value = coupon ? coupon.codigo : $('cs-coupon').value;
+    $('cs-coupon').readOnly = !!coupon;
+    $('cs-coupon-apply').textContent = coupon ? 'Quitar' : 'Aplicar';
+    if (coupon) $('cs-coupon-msg').textContent = t.couponNote || 'Cupón aplicado.';
     $('cs-total').textContent = totalText();
     $('cs-send').href = waLink(orderMessage());
   }
@@ -357,7 +473,12 @@
       return '- ' + l.cantidad + ' x ' + p.nombre + (l.tono ? ' (' + l.tono + ')' : '') + ': ' + priceOf(p, l.cantidad).toLowerCase();
     });
     const note = $('cs-note').value.trim();
-    return ['Hola! Quiero hacer este pedido:', '', ...lines, '', 'Total: ' + totalText(), ...(note ? ['', 'Nota: ' + note] : [])].join('\n');
+    const t = totals();
+    const extra = [];
+    if (t.promos.length || t.couponAmount) extra.push('Subtotal: ' + money(t.sub));
+    t.promos.forEach((x) => extra.push(x.label + ': -' + money(x.amount)));
+    if (t.couponAmount) extra.push(couponLabel(coupon) + ': -' + money(t.couponAmount));
+    return ['Hola! Quiero hacer este pedido:', '', ...lines, '', ...extra, 'Total: ' + totalText(), ...(note ? ['', 'Nota: ' + note] : [])].join('\n');
   }
 
   // ---------- avisos ----------
@@ -399,6 +520,8 @@
   function openCart(fromUrl) { renderCart(); showSheet($('cart-sheet'), '#pedido', fromUrl === true); }
   $('open-cart').addEventListener('click', openCart);
   $('cartbar-btn').addEventListener('click', openCart);
+  $('cs-coupon-apply').addEventListener('click', applyCoupon);
+  $('cs-coupon').addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); applyCoupon(); } });
   $('cs-note').addEventListener('input', () => { $('cs-send').href = waLink(orderMessage()); });
   $('cs-clear').addEventListener('click', () => {
     if (!confirm('¿Vaciar todo el pedido?')) return;

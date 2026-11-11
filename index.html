@@ -74,6 +74,7 @@
       <div class="sheet__text">
         <h2 id="ps-name"></h2>
         <p class="price" id="ps-price"></p>
+        <p class="promo" id="ps-promo" hidden></p>
         <p class="desc" id="ps-desc"></p>
       </div>
       <fieldset class="tones" id="ps-tones-wrap" hidden>
@@ -110,9 +111,18 @@
         <span>Nota para el pedido (opcional)</span>
         <textarea id="cs-note" rows="2" placeholder="Entrega, dudas de tono, regalo"></textarea>
       </label>
+      <div class="coupon" id="cs-coupon-wrap">
+        <label class="note" for="cs-coupon">Cupón de descuento</label>
+        <div class="coupon__row">
+          <input id="cs-coupon" type="text" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" maxlength="40" placeholder="Código">
+          <button class="btn btn--card" id="cs-coupon-apply" type="button">Aplicar</button>
+        </div>
+        <p class="coupon__msg" id="cs-coupon-msg" role="status"></p>
+      </div>
       <button class="textbtn" id="cs-clear" type="button">Vaciar pedido</button>
     </div>
     <div class="sheet__bar" id="cs-foot" hidden>
+      <div class="sum" id="cs-sum"></div>
       <p class="total"><span>Total</span><span class="fig" id="cs-total"></span></p>
       <a class="btn btn--ink btn--wide" id="cs-send" href="#" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
       <p class="fine">Se abre WhatsApp con tu lista escrita. Tú decides si la envías.</p>
