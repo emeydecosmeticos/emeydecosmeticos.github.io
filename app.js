@@ -11,6 +11,7 @@
   };
 
   const CART_KEY = 'emeyde.pedido.v1';
+  const MAX_QTY = 20;       // por línea del pedido, igual que en la hoja de producto
   let store = {}, categories = [], products = [];
   let cart = [];            // [{ id, tono, cantidad }]
   let filter = { cat: 'todo', q: '' };
@@ -61,6 +62,7 @@
       $('notice').hidden = !store.ejemplo;
       readCart();
       readCoupon();
+      recheckCoupon();
       readUrl();
       renderChips();
       renderGrid();
@@ -101,7 +103,8 @@
     if (filter.cat !== 'todo') p.set('cat', filter.cat);
     if (filter.q) p.set('q', filter.q);
     const qs = p.toString();
-    history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
+    // se conserva history.state: si una hoja acaba de abrirse, debe seguir cerrándose con "atrás"
+    history.replaceState(history.state, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
   }
 
   const norm = (s) => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
@@ -251,6 +254,7 @@
   }
   function hideSheet(dlg) {
     // si la hoja entró al historial, cerrarla es "atrás"; popstate hace la animación
+    if (pendingBack) return;   // ya va de regreso: un segundo "atrás" sacaría a la persona del sitio
     if (history.state && history.state.sheet && location.hash) { pendingBack = true; history.back(); return; }
     animateClose(dlg);
   }
@@ -315,7 +319,13 @@
   function readCart() {
     try {
       const raw = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
-      cart = raw.filter((l) => products.some((p) => p.id === l.id && !p.agotado) && l.cantidad > 0);
+      // se quitan líneas de productos agotados o que ya no existen, y de tonos que se quitaron del catálogo
+      const ok = (l) => {
+        const p = products.find((x) => x.id === l.id);
+        if (!p || p.agotado || !(l.cantidad > 0)) return false;
+        return !l.tono || (p.tonos || []).some((t) => t.nombre === l.tono);
+      };
+      cart = raw.filter(ok).map((l) => Object.assign(l, { cantidad: Math.min(MAX_QTY, l.cantidad) }));
     } catch (e) { cart = []; }
   }
   function saveCart() {
@@ -382,21 +392,45 @@
   const couponLabel = (c) => 'Cupón ' + c.codigo + (c.tipo === 'monto' ? '' : ' (' + c.valor + '%)');
 
   // El código se valida en el Worker; la lista de cupones nunca llega al navegador.
+  // Devuelve el cupón si es válido, o { motivo } si el Worker lo rechaza. Lanza un error si no se pudo preguntar.
+  async function checkCoupon(code) {
+    if (!API_URL) throw new Error('sin servicio');
+    const res = await fetchJson(API_URL + 'cupon?codigo=' + encodeURIComponent(code), 6000);
+    if (res && res.ok === true && Number(res.valor) > 0) {
+      return { codigo: String(res.codigo), tipo: res.tipo === 'monto' ? 'monto' : 'porcentaje', valor: Number(res.valor), minimo: Number(res.minimo) || 0 };
+    }
+    if (res && res.ok === false) return { motivo: res.motivo || 'invalido' };
+    throw new Error('respuesta inesperada');
+  }
+
+  // Un cupón guardado de otra visita se vuelve a preguntar: si ya venció o se apagó, se quita.
+  // Si no se puede preguntar (sin conexión), se conserva.
+  async function recheckCoupon() {
+    if (!coupon) return;
+    const code = coupon.codigo;
+    let res;
+    try { res = await checkCoupon(code); } catch (e) { return; }
+    if (!coupon || coupon.codigo !== code) return;   // mientras tanto la persona lo quitó o puso otro
+    if (res.motivo) {
+      coupon = null;
+      $('cs-coupon').value = '';
+      $('cs-coupon-msg').textContent = res.motivo === 'vencido' ? 'El cupón ' + code + ' ya venció.' : 'El cupón ' + code + ' ya no es válido.';
+    } else coupon = res;
+    saveCoupon(); renderCartBadge();
+    if ($('cart-sheet').open) renderCart();
+  }
+
   async function applyCoupon() {
     const input = $('cs-coupon'), msg = $('cs-coupon-msg'), btn = $('cs-coupon-apply');
+    if (btn.disabled) return;   // ya se está revisando un código
     if (coupon) { coupon = null; saveCoupon(); input.value = ''; msg.textContent = ''; renderCartBadge(); renderCart(); return; }
     const code = input.value.trim().toUpperCase();
     if (!code) { msg.textContent = 'Escribe tu código.'; return; }
     btn.disabled = true; msg.textContent = 'Revisando…';
     try {
-      if (!API_URL) throw new Error('sin servicio');
-      const res = await fetchJson(API_URL + 'cupon?codigo=' + encodeURIComponent(code), 6000);
-      if (res && res.ok === true && Number(res.valor) > 0) {
-        coupon = { codigo: String(res.codigo), tipo: res.tipo === 'monto' ? 'monto' : 'porcentaje', valor: Number(res.valor), minimo: Number(res.minimo) || 0 };
-        saveCoupon(); msg.textContent = '';
-      } else if (res && res.ok === false) {
-        msg.textContent = res.motivo === 'vencido' ? 'Ese cupón ya venció.' : 'Ese cupón no es válido.';
-      } else throw new Error('respuesta inesperada');
+      const res = await checkCoupon(code);
+      if (res.motivo) msg.textContent = res.motivo === 'vencido' ? 'Ese cupón ya venció.' : 'Ese cupón no es válido.';
+      else { coupon = res; saveCoupon(); msg.textContent = ''; }
     } catch (e) {
       msg.textContent = 'No se pudo revisar el cupón. Inténtalo de nuevo.';
     }
@@ -408,7 +442,7 @@
   function addToCart(p, tone, qty) {
     const tono = tone ? tone.nombre : '';
     const line = cart.find((l) => l.id === p.id && l.tono === tono);
-    if (line) line.cantidad += qty; else cart.push({ id: p.id, tono, cantidad: qty });
+    if (line) line.cantidad = Math.min(MAX_QTY, line.cantidad + qty); else cart.push({ id: p.id, tono, cantidad: Math.min(MAX_QTY, qty) });
     saveCart(); renderCartBadge();
     if (navigator.vibrate) navigator.vibrate(8);
     const badge = $('cart-count');
@@ -452,6 +486,7 @@
       const minus = el('button'); minus.type = 'button'; minus.setAttribute('aria-label', 'Quitar uno'); minus.textContent = '−';
       const out = el('output', 'fig', line.cantidad);
       const plus = el('button'); plus.type = 'button'; plus.setAttribute('aria-label', 'Agregar uno'); plus.textContent = '+';
+      plus.disabled = line.cantidad >= MAX_QTY;
       minus.addEventListener('click', () => changeQty(line, -1));
       plus.addEventListener('click', () => changeQty(line, 1));
       stepper.append(minus, out, plus);
@@ -502,7 +537,7 @@
   }
 
   function changeQty(line, delta) {
-    line.cantidad += delta;
+    line.cantidad = Math.min(MAX_QTY, line.cantidad + delta);
     if (line.cantidad <= 0) cart = cart.filter((l) => l !== line);
     saveCart(); renderCartBadge(); renderCart();
   }
@@ -557,7 +592,7 @@
   $('ps-stepper').addEventListener('click', (e) => {
     const b = e.target.closest('[data-step]');
     if (!b) return;
-    currentQty = Math.min(20, Math.max(1, currentQty + Number(b.dataset.step)));
+    currentQty = Math.min(MAX_QTY, Math.max(1, currentQty + Number(b.dataset.step)));
     $('ps-qty').textContent = currentQty;
   });
 
@@ -572,7 +607,8 @@
   $('open-cart').addEventListener('click', openCart);
   $('cartbar-btn').addEventListener('click', openCart);
   $('cs-coupon-apply').addEventListener('click', applyCoupon);
-  $('cs-coupon').addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); applyCoupon(); } });
+  // Enter solo aplica: con un cupón ya puesto no lo quita (para eso está el botón "Quitar")
+  $('cs-coupon').addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); if (!coupon) applyCoupon(); } });
   $('cs-note').addEventListener('input', () => { $('cs-send').href = waLink(orderMessage()); });
   $('cs-clear').addEventListener('click', () => {
     if (!confirm('¿Vaciar todo el pedido?')) return;
@@ -626,6 +662,7 @@
 
   window.addEventListener('popstate', () => {
     pendingBack = false;
+    writeUrl();   // la entrada a la que se regresó puede no tener la búsqueda o categoría actual
     if (location.hash !== '#destacados' && !$('reels').hidden) hideReels(true);
     if (!location.hash) document.querySelectorAll('dialog.sheet[open]').forEach(animateClose);
     else openFromHash();
@@ -643,7 +680,7 @@
   const reduceMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
   const featured = () => products.filter((p) => p.destacado && p.imagen && !p.agotado).slice(0, 3);
   const iconHtml = (cls, html) => { const n = el('span', cls); n.innerHTML = html; return n; };   // solo iconos fijos, nunca datos
-  const reels = { auto: false, timer: null, active: null, started: 0, remaining: HOLD_MS, paused: false, io: null };
+  const reels = { auto: false, timer: null, active: null, started: 0, remaining: HOLD_MS, paused: false, io: null, leaveTimer: null };
 
   function buildReels() {
     const box = $('reels');
@@ -765,6 +802,7 @@
   function showReels() {
     if (!featured().length) return;
     const box = $('reels');
+    clearTimeout(reels.leaveTimer);   // si aún se estaba yendo, que esa salida no esconda los nuevos
     buildReels();
     box.classList.remove('is-leaving');
     box.hidden = false;
@@ -782,7 +820,7 @@
   }
   // cerrar = "atrás": así el botón atrás del teléfono también lleva al catálogo
   function closeReels() {
-    if ($('reels').hidden) return;
+    if ($('reels').hidden || pendingBack) return;
     if (location.hash === '#destacados' && history.state && history.state.reels) { pendingBack = true; history.back(); return; }
     hideReels(true);
   }
@@ -795,7 +833,8 @@
     const done = () => { box.hidden = true; box.classList.remove('is-leaving'); box.replaceChildren(); };
     if (!animated || reduceMotion() || box.scrollTop > box.scrollHeight - box.clientHeight * 1.4) { done(); return; }
     box.classList.add('is-leaving');
-    setTimeout(done, 220);
+    clearTimeout(reels.leaveTimer);
+    reels.leaveTimer = setTimeout(done, 220);
   }
   // una vez al día, y solo si la persona llegó a la portada (no a un producto, una categoría o su pedido)
   function maybeShowReels() {
