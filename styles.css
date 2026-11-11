@@ -17,6 +17,8 @@
   --color-photo: oklch(100% 0 0);
   --tint-1: oklch(90% 0.05 250); --tint-2: oklch(92% 0.045 75); --tint-3: oklch(90% 0.045 300);
   --color-heart: oklch(62% 0.19 27);
+  --reel-ink: oklch(21% 0.012 38); --reel-ink-2: oklch(29% 0.013 40); --reel-cotton: oklch(98.8% 0.0045 80);
+  --reel-board: oklch(22% 0.011 40); --reel-board-type: oklch(96.5% 0.006 70); --reel-track: oklch(21% 0.012 38 / 0.18);
   --hold: 5s;
   --safe-l: env(safe-area-inset-left, 0px);
   --safe-r: env(safe-area-inset-right, 0px);
@@ -234,9 +236,9 @@ main { padding-block: var(--space-md) var(--space-3xl); min-height: 70vh; }
 /* destacados: pantallas completas antes del catálogo. Siempre en claro: la foto se funde con el color de fondo. */
 html.has-reels { overflow: hidden; }
 .reels {
-  --color-ink: oklch(21% 0.012 38); --color-ink-2: oklch(29% 0.013 40); --color-cotton: oklch(98.8% 0.0045 80);
-  --color-board: oklch(22% 0.011 40); --color-board-type: oklch(96.5% 0.006 70); --color-focus: oklch(21% 0.012 38);
-  --reel-track: oklch(21% 0.012 38 / 0.18); --reel-side: max(var(--space-md), calc((100% - 480px) / 2));
+  --color-ink: var(--reel-ink); --color-ink-2: var(--reel-ink-2); --color-cotton: var(--reel-cotton);
+  --color-board: var(--reel-board); --color-board-type: var(--reel-board-type); --color-focus: var(--reel-ink);
+  --reel-side: max(var(--space-md), calc((100% - 480px) / 2));
   position: fixed; inset: 0; z-index: var(--z-modal); overflow-y: auto; scroll-snap-type: y mandatory; overscroll-behavior: contain; scrollbar-width: none; color: var(--color-ink);
   animation: reels-in var(--dur-short) var(--ease-out);
 }
