@@ -21,7 +21,7 @@
   <header class="top">
     <div class="wrap top__row">
       <h1 class="brand">Eme y De</h1>
-      <a class="top__link" id="ig-link" href="https://www.instagram.com/eme_y_de/" rel="noopener">Instagram</a>
+      <button class="top__link top__btn" id="open-reels" type="button" hidden>Destacados</button>
       <button class="iconbtn" id="open-cart" type="button" aria-label="Ver mi pedido">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
         <span class="iconbtn__count" id="cart-count" hidden>0</span>
@@ -57,6 +57,7 @@
 
   <footer class="foot wrap">
     <p>Los pedidos se confirman por WhatsApp. Esta página no cobra ni guarda tus datos.</p>
+    <p><a class="top__link" id="ig-link" href="https://www.instagram.com/eme_y_de/" rel="noopener">Instagram @eme_y_de</a></p>
   </footer>
 
   <div class="cartbar" id="cartbar" hidden>
@@ -111,6 +112,11 @@
         <span>Nota para el pedido (opcional)</span>
         <textarea id="cs-note" rows="2" placeholder="Entrega, dudas de tono, regalo"></textarea>
       </label>
+      <fieldset class="ship" id="cs-ship-wrap">
+        <legend>Envío</legend>
+        <div class="ship__list" id="cs-ship"></div>
+        <p class="ship__hint" id="cs-ship-hint"></p>
+      </fieldset>
       <div class="coupon" id="cs-coupon-wrap">
         <label class="note" for="cs-coupon">Cupón de descuento</label>
         <div class="coupon__row">
@@ -128,6 +134,8 @@
       <p class="fine">Se abre WhatsApp con tu lista escrita. Tú decides si la envías.</p>
     </div>
   </dialog>
+
+  <div class="reels" id="reels" aria-label="Productos destacados" hidden></div>
 
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 

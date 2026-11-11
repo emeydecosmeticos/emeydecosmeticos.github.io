@@ -5,7 +5,41 @@
     "whatsapp": "",
     "moneda": "MXN",
     "locale": "es-MX",
-    "ejemplo": true
+    "ejemplo": true,
+    "envios": [
+      {
+        "id": "correos",
+        "nombre": "Correos de México",
+        "precio": 80,
+        "tiempo": "5 a 14 días hábiles",
+        "gratis_desde": 899
+      },
+      {
+        "id": "estafeta",
+        "nombre": "Estafeta",
+        "precio": 190,
+        "tiempo": "2 a 5 días hábiles"
+      },
+      {
+        "id": "fedex",
+        "nombre": "FedEx",
+        "precio": 220,
+        "tiempo": "2 a 3 días hábiles"
+      },
+      {
+        "id": "uber",
+        "nombre": "Uber en CDMX",
+        "precio": null,
+        "tiempo": "Se cotiza por WhatsApp"
+      },
+      {
+        "id": "personal",
+        "nombre": "Entrega personal",
+        "precio": 0,
+        "tiempo": "Se acuerda por WhatsApp",
+        "activo": false
+      }
+    ]
   },
   "categorias": [
     {
@@ -58,7 +92,9 @@
         "images/tocobo-sun-steck-1.webp",
         "images/tocobo-sun-steck-2.webp",
         "images/tocobo-sun-steck-3.webp"
-      ]
+      ],
+      "destacado": true,
+      "destacado_texto": "Protector solar en barra con extracto de algodón. Acabado suave, sin ser pegajoso. SPF 50+."
     },
     {
       "id": "uv-defender-loreal",
@@ -351,7 +387,8 @@
       "imagenes": [
         "images/suero-la-roche-posay-niacinamida-pura-10-1.webp",
         "images/suero-la-roche-posay-niacinamida-pura-10-2.webp"
-      ]
+      ],
+      "destacado": true
     },
     {
       "id": "suero-vichy-liftactiv-vitamina-b3",
@@ -767,6 +804,8 @@
       "descripcion": "Hidratante de labios con textura súper cremosa, ideal para labios agrietados. Usa el codigo EMEYDE2POR1 en tu carrito para habilitar el 2x1 de este producto",
       "sku": "MDHID0001",
       "imagen": "images/hidratante-de-labios-aquaphor-reparacion-de-labios-1.webp",
+      "destacado": true,
+      "destacado_texto": "Hidratante de labios con textura súper cremosa, ideal para labios agrietados.",
       "promo": "2x1"
     },
     {
