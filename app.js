@@ -37,19 +37,20 @@
   }
 
   // Primero el Worker; si falla o tarda, la copia de respaldo del sitio.
+  // backup: true cuando se usó la copia del sitio, que puede tener precios viejos.
   async function getCatalog() {
     if (API_URL) {
       try {
         const data = await fetchJson(API_URL, 5000);
-        if (data && Array.isArray(data.productos) && data.productos.length) return data;
+        if (data && Array.isArray(data.productos) && data.productos.length) return { data, backup: false };
       } catch (e) { /* se usa el respaldo */ }
     }
-    return fetchJson('products.json', 10000);
+    return { data: await fetchJson('products.json', 10000), backup: !!API_URL };
   }
 
   async function load() {
     try {
-      const data = await getCatalog();
+      const { data, backup } = await getCatalog();
       store = data.tienda || {};
       categories = data.categorias || [];
       products = data.productos || [];
@@ -59,7 +60,9 @@
       money = (n) => fmt.format(n);
       if (store.instagram) $('ig-link').href = store.instagram;
       if (store.nombre) document.querySelector('.brand').textContent = store.nombre;
-      $('notice').hidden = !store.ejemplo;
+      // con la copia de respaldo, el aviso dice que los precios pueden no estar al día
+      if (backup) $('notice').textContent = 'No pudimos cargar los precios más recientes. Confirma precio y disponibilidad por WhatsApp.';
+      $('notice').hidden = !store.ejemplo && !backup;
       readCart();
       readCoupon();
       recheckCoupon();
@@ -174,7 +177,18 @@
 
   // ---------- promociones ----------
   // "2x1", "3x2": lleva N y paga M del mismo producto. Con "promo_hasta": "2026-12-31" deja de aplicar después de esa fecha.
-  const today = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+  // La fecha es la de la Ciudad de México, igual que los cupones en el Worker, sin importar el reloj del teléfono.
+  const TIME_ZONE = 'America/Mexico_City';
+  const today = () => {
+    const d = new Date();
+    try {
+      const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', { timeZone: TIME_ZONE, year: 'numeric', month: '2-digit', day: '2-digit' })
+        .formatToParts(d).map((x) => [x.type, x.value]));
+      return parts.year + '-' + parts.month + '-' + parts.day;
+    } catch (e) {   // navegador sin zonas horarias: la fecha del teléfono
+      return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    }
+  };
   function promoOf(p) {
     const m = /^(\d+)x(\d+)$/.exec(p.promo || '');
     if (!m) return null;
