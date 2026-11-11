@@ -960,6 +960,27 @@
       ]
     },
     {
+      "id": "probando-worker",
+      "nombre": "Probando worker",
+      "marca": "Github",
+      "categoria": "cabello",
+      "categorias": [
+        "cabello"
+      ],
+      "precio": 9999,
+      "descripcion": "Probando sitio worker",
+      "imagen": "images/probando-worker-mwbsz1za0.webp",
+      "promo": "2x1",
+      "promo_hasta": "2026-11-13",
+      "destacado": true,
+      "tonos": [
+        {
+          "nombre": "Piel",
+          "color": "#ac8080"
+        }
+      ]
+    },
+    {
       "id": "instant-age-rewind",
       "nombre": "Instant Age Rewind",
       "marca": "",
